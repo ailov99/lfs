@@ -1,0 +1,701 @@
+/********************* Colour reference chart*********************
+Type ********************** Colour *******************************
+
+Primary colour              #1da13d
+Primary colour :hover       #4ab363
+Primary colour :active      #116024
+
+Secondary colour            #dd8908
+Secondary colour :hover     #f7ad3a 
+Secondary colour :active    #935b05 
+
+*/
+
+/*--------------------
+  Welcome page
+  --------------------*/
+
+.carousel img {
+  position: relative;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  max-height: 400px;
+  max-width: none;
+}
+
+/*--------------------
+  Body
+  --------------------*/
+body {
+  background: #fafdfb;
+  padding-top: 50px;
+}
+
+/*--------------------
+  Navbar
+  --------------------*/
+.navbar {
+  z-index: 3;
+  background: #1da13d;
+  border-width: 0px 0px 2px 0px;
+  border-color: rgba(0,0,0,0.15);
+
+  -webkit-box-shadow: 0px 4px 10px rgba(0,0,0,0.59);
+  -moz-box-shadow: 0px 4px 10px rgba(0,0,0,0.59);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.59);
+}
+
+.navbar-default .navbar-header > a > img {
+  width: auto;
+  height: 50px;
+}
+
+.navbar-default .navbar-nav > li {
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+  font-size: 120%;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 0px 0px 2px 4px;
+  border-radius: 3px;
+  border-color: rgba(0,0,0,0.10);
+
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.navbar-default .navbar-nav > li:hover, .navbar-default .navbar-nav > .active > a:hover {
+  background: #4ab363;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > .active > a:hover {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li:active, .navbar-default .navbar-nav > li:focus, .navbar-default .navbar-nav > .active > a {
+  background: #116024;
+  position: relative;
+  border-width: 2px 0px 0px 4px;
+  top: 1px;
+}
+.navbar-default .navbar-nav > li > a:active, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > .active > a {
+  color: white;
+}
+
+.module-page{
+  display: none;
+}
+
+
+.custom-navbar {
+  background-image: linear-gradient(white, #b1d9f4);
+  border: #DBE6AF;
+}
+
+.whitelink {
+  color:white;
+}
+
+/*--------------------
+  Sidebar
+  --------------------*/
+.sidebar {
+  position: fixed;
+  bottom: -10px;
+  top: 0;
+  right: 0;
+  display: inline;
+  float: right;
+  display: block;
+  padding: 20px;
+  z-index: 1;
+
+
+  /*shadows to give depth*/
+  -webkit-box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
+  -moz-box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
+  box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
+}
+
+/*--------------------
+  Module panels
+  --------------------*/
+div[class*='col-'] .module {
+  padding: 0px 5px 0px 0px;
+}
+
+a .panel-module, a:hover .panel-module, a:active .panel-module {
+  color: white;
+}
+
+.panel-module, .panel-module .panel-heading, .panel-module .panel-footer {
+  background: #1da13d;
+  -webkit-box-shadow: 0px 2px 5px rgba(0,0,0,0.59);
+  -moz-box-shadow: 0px 2px 5px rgba(0,0,0,0.59);
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.59);
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.panel-module:hover, .panel-module:hover .panel-footer {
+  color: white;
+  background: #4ab363;
+}
+.panel-module:hover .panel-footer #module-progress-bar {
+  color: #4ab363;
+}
+.panel-module:hover .panel-body {
+  box-shadow: 0px 0px 30px 20px #4ab363 inset;
+}
+
+.panel-module:active, .panel-module:active .panel-footer {
+  position: relative;
+  top: 1px;
+  color: white;
+  background: #116024;
+}
+.panel-module:active .panel-footer #module-progress-bar {
+  color: #116024;
+}
+.panel-module:active .panel-body {
+  box-shadow: 0px 0px 30px 20px #116024 inset;
+}
+
+.panel-module {
+  border-style: solid;
+  border-width: 4px;
+  border-radius: 10px;
+  border-color: rgba(0,0,0,0.6);
+}
+
+.panel-module .panel-heading {
+  position: relative;
+  background: rgba(0,0,0,0.4);
+  padding-top: 5px;
+  padding-bottom: 0px;
+  font-size: 120%;
+  font-weight: bold;
+  height:3.2em;
+
+  /*overflow to hide text when title does not fit*/
+  overflow:hidden;
+
+}
+
+.panel-module .panel-body {
+  margin-top: -3em;
+  font-size: 120%;
+  background-image: url(../img/temp_background.jpg); /*default background for the modules*/
+  background-size: cover;
+  height: 150px;
+  box-shadow: 0px 0px 30px 10px #1da13d inset;
+}
+
+.panel-module .panel-footer {
+  padding: 0px 1px;
+  border: none;
+}
+
+/*modules with 0 < progress < 100*/
+.attempted .panel-body {
+  box-shadow: 0px 0px 30px 10px #77c68a inset;
+}
+.attempted, .attempted .panel-footer {
+  background: #77c68a;
+}
+.attempted .panel-footer #module-progress-bar {
+  color: #77c68a;
+}
+
+/*modules with progress = 0*/
+.new .panel-body {
+  box-shadow: 0px 0px 30px 10px #a3aea3 inset;
+}
+.new, .new .panel-footer {
+  background: #a3aea3;
+}
+.new .panel-footer #module-progress-bar {
+  color: #a3aea3;
+}
+
+#module-tick {
+  color:#dd8908;
+  position:absolute;
+  right:-2px;
+  top:-8px
+}
+
+/*--------------------
+  Progress Bar
+  --------------------*/
+
+.progress {
+  width: 75%;
+  margin-top: 3px;
+}
+
+#module-progress-bar {
+  text-align: center;
+  font-size: 100%;
+  color: #1da13d;
+  background-color: rgba(255,255,255,0.9);
+}
+
+#leaderboard-progress-bar{
+  margin-bottom: 0px;
+  width: 100%;
+  margin-bottom: 1px;
+  font-weight: bold;
+  background-color: rgba(0,0,0,0.2);
+  border-style: none;
+}
+
+#profile-module-progress {
+  width: 100%;
+  margin-bottom: 1px;
+  font-weight: bold;
+  color: #1da13d;
+  background-color: rgba(0,0,0,0.2);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(255,255,255,0.8);
+}
+
+#profile-progress-bar {
+  text-align: center;
+  font-size: 100%;
+  color: white;
+  background-color: #1da13d;
+}
+
+#module-progress {
+  width: 100%;
+  margin-bottom: 1px;
+  font-weight: bold;
+  background-color: rgba(0,0,0,0.2);
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(255,255,255,0.8);
+}
+
+/*--------------------
+  Circular Progress Bar
+  --------------------*/
+
+.circle strong {
+  position: absolute;
+  left:0px;
+  top:148px;
+  width: 100%;
+  font-size: 300%;
+  text-align:center;
+}
+
+#profile_circle strong {
+  position: absolute;
+  left:0px;
+  top:85px;
+  width: 100%;
+  font-size: 300%;
+  text-align:center;
+}
+
+/*--------------------
+  Buttons
+  --------------------*/
+
+.btn-prim {
+  color: white;
+  font-weight: bold;
+  background: #1da13d;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+  border-color: rgba(0,0,0,0.6);
+  
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.btn-prim > a, .btn-prim:hover > a:hover, .btn-prim > a:active {
+  color: white;
+  font-weight: bold;
+}
+
+.btn-prim:hover {
+  color: white;
+  background: #4ab363;
+}
+
+.btn-prim:active {
+  position: relative;
+  top: 1px;
+  color: white;
+  background: #116024;
+}
+
+
+.btn-sec {
+  color: white;
+  font-weight: bold;
+  background: #dd8908;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 6px;
+  border-color: rgba(0,0,0,0.6);
+
+  -webkit-transition: all 0.15s;
+  -moz-transition: all 0.15s;
+  transition: all 0.15s;
+}
+
+.btn-sec > a, .btn-sec > a:hover, .btn-sec > a:active {
+  color: white;
+  font-weight: bold;
+}
+
+.btn-sec:hover {
+  color: white;
+  background: #f7ad3a;
+}
+
+.btn-sec:active {
+  position: relative;
+  top: 1px;
+  color: white;
+  background: #935b05;
+}
+
+.change-password {
+  margin-right: 3%;
+}
+
+.edit-profile-submit {
+  margin-bottom: 2%;
+}
+/*--------------------
+  Headings
+  --------------------*/
+h2 {
+  color: black;
+  text-shadow: 1px 1px grey;
+}
+
+.image_container h3 {
+   position: absolute;
+   top: 105px;
+   left: 0;
+   width: 100%;
+}
+
+h3 span {
+   color: white;
+   font: bold 16px/37px Helvetica, Sans-Serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0);
+   background: rgba(0, 0, 0, 0.7);
+   padding: 8px;
+}
+
+/*--------------------
+  Containers
+  --------------------*/
+.login-container {
+  margin-left:38%;
+}
+
+.image_container {
+  position: relative;
+}
+
+.change-password-container {
+  margin-top: 5%;
+}
+
+/*--------------------
+  Random stuff
+  --------------------*/
+.border {
+  outline: 1px solid #4ab363;
+}
+
+.no-underline, .no-underline:hover, .no-underline:active, .no-underline:link, .no-underline:visited {
+  text-decoration: none;
+}
+
+.page-heading {
+  color: #AAAAAA;
+}
+
+form a {
+  color: black;
+}
+
+ .downloadables {
+  color: black;
+}
+
+.ml15 {
+  margin-left: 15px;
+}
+
+.no-mt {
+  margin-top: 0px;
+}
+
+.admin-guide-img {
+  margin-bottom: 10px;
+  border: 0.5px solid grey;
+  box-shadow: 2px 2px 10px 2px #888888;
+}
+
+hr {
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, lightgray, rgba(140,140,140,10), lightgray);
+  background-image:    -moz-linear-gradient(left, lightgray, rgba(140,140,140,10), lightgray);
+  background-image:     -ms-linear-gradient(left, lightgray, rgba(140,140,140,10), lightgray);
+  background-image:      -o-linear-gradient(left, lightgray, rgba(140,140,140,10), lightgray);
+  border: 0;
+}
+
+.buttons-with-margin-bottom {
+  margin-bottom: 7%;
+}
+
+/*--------------------
+  IDs
+  --------------------*/
+
+#login {
+  padding-top:2%;
+  margin:auto;
+}
+
+#login-button {
+  width: 100%;
+  margin-top: 5%;
+  border-radius: 5px;
+  height: 45px;
+  background-image: linear-gradient(#88EE88, #009933);
+  color: white;
+  border-color: #009933;
+}
+
+#register-button {
+  width: 100%;
+  margin-top: 5%;
+  border-radius: 5px;
+  height: 45px;
+  background-image: linear-gradient(#009933, #99CC33);
+  color: white;
+  border-color: #009933;
+}
+
+.centre {
+  width: 50%;
+  margin: auto;
+}
+
+.100width {
+  width: 100%;
+}
+
+#category-select {
+  background-color: #1da13d;
+  color: white;
+
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   border: 1px solid #ccc;
+   text-align: center;
+   height: 3%;
+   min-height: 25px;
+}
+
+/*--------------------
+  Leaderboards
+  --------------------*/
+
+.container.leaderboard {
+  width: 70%;
+  padding-right: 20%;
+  z-index: 0;
+}
+
+#title {
+  padding-right: 25%;
+  width: 120%;
+}
+
+.display.mydisplay {
+  z-index: -1;
+}
+
+
+#currentuser {
+  background-color: #1DA13D;
+  color: white;
+}
+
+.invisible-text {
+  color:transparent;
+  align: center;
+}
+
+td {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+
+.leaderboard-progress{
+  font-size: 0%;
+  text-align: center;
+}
+
+.user-names, .user-names:hover, .user-names:active, .user-names:link{
+	color:black;
+	text-decoration: none;
+}
+
+.error-messages {
+	color:red;
+  margin-left: 3%;
+}
+
+.leaderboard-name, .leaderboard-name:hover, .leaderboard-name:link, .leaderboard-name:active {
+  color: black;
+}
+
+/*--------------------
+  admin guide sidebar
+  --------------------*/
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: linear-gradient(#1da13d, lightgrey);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #fff;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}

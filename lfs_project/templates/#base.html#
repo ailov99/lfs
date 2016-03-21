@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Bootstrap & jQuery-->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="{% static 'js/jquery-1.11.3.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+  <!-- Circle Progress -->
+  <script src="{% static 'js/circle-progress.js' %}"></script>
+  <!-- custom css & js -->
+  <script src="{% static 'js/master.js' %}"></script>
+  <link href="{% static 'css/master.css' %}" type="text/css" rel="stylesheet">
+
+  <title id="name">LFS &gt;{% block title %}{% endblock %}</title>
+
+</head>
+
+
+<body data-spy="scroll" data-target=".navbar">
+  <!-- Navbar -->
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      	<button type="button" class="navbar-toggle collapsed"
+      		data-toggle="collapse" data-target=".navbar-collapse"
+      		aria-expanded="false">
+        	<span class="sr-only">Toggle navigation</span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+        	<span class="icon-bar"></span>
+    	</button>
+      	<a href="{% url 'index' %}" ><img src="{% static 'img/CCCLogoWHITE.png' %}"/></a>
+      </div>
+      <div class="navbar-collapse collapse" >
+        <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+          <li class="{% if nbar == 'home' %}active{% endif %}"><a href="{% url 'index' %}"><i class="fa fa-home"></i> Home</a></li>
+          <li class="{% if nbar == 'profile' %}active{% endif %}"><a href="{% url 'profile' user.id %}"><i class="fa fa-user"></i> Profile</a></li>
+          <li class="{% if nbar == 'forum' %}active{% endif %}"><a href="{% url 'forum' %}"><i class="fa fa-comments"></i> Forum</a></li>
+         <!-- <li><a href="{% url 'modules' %}"><i class="fa fa-book"></i> Modules </a></li> -->
+          <li><a href="" data-toggle="modal" data-target="#about"> <i class="fa fa-question-circle"></i> About</a></li>
+          <li class="{% if nbar == 'leaderboard' %}active{% endif %}"><a href="{% url 'leaderboard' %}"><i class="fa fa-trophy"></i> Leaderboard</a></li>
+          <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log out</a></li>
+        {% else %}
+
+          {% if nbar == 'login' %}
+            <li class="active"><a href="#login"> Log In</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}"> Log In</a></li>
+            <li class="active"><a href="{% url 'register' %}">Register</a></li>
+          {% endif %}
+
+        {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav> <!-- ./Navbar -->
+
+
+<!-- About Modal -->
+<div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="aboutPage">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="aboutPage">About Us</h4>
+      </div>
+      <div class="modal-body">
+      <h4>About LFS Website</h4>
+           <p>
+             The aim is to provide a online training programme that will assist the requirements of the education
+             sector to incorporate Learning for Sustainability within the curriculum, and to allow practitioners to
+             become leaders in implementing sustainable development within their institutions.
+           </p>
+               <h4>Crichton Carbon Centre <img src="{% static 'img/CCCLogo.png' %}" style="width: 50px; height: 50px;"/></h4>
+           <p>
+                The Crichton Carbon Centre has been contributing to reducing carbon emissions in Dumfries and Galloway and
+                across Scotland since 2007. Over the past eight years, the Crichton Carbon Centre has delivered a programme
+                of Sustainable Development Education, working with primary, secondary and higher education institutions, with
+                an aim to increase awareness and knowledge amongst both students and education staff about climate change and
+                indeed sustainable development more broadly, in line with the agenda for Learning for Sustainability.</br>
+                With the experience of working very successfully with over 80 schools in the region through the delivery of education
+                projects, supporting teachers to increase their capability to deliver Sustainable Development Education and for
+                pupils to undertake actions on climate change, we believe that we are now at a stage to extend and scale-up our
+                education programme, potentially to cover the whole of Scotland. The proposed approach is to use the expertise,
+                experience and materials developed through our on-ground delivery of the schools project to create an online
+                teacher-training course (MOOC) that will support the Career-Long Professional Learning (CLPL) of the education
+                staff on Sustainable Development Education and Learning for Sustainability.
+           </p>
+           <strong>Contact CCC</strong><br>
+           <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <a href="mailto:info@carboncentre.org">info@carboncentre.org</a>
+           <h4>Development <img src="{% static 'img/Glasgow_logo.png' %}" style="width: 30px; height: 43px;"/></h4>
+           <p>Developed by a Software Engineering team from Glasgow University. </br>
+             Aurimas Saulys,Greg Thomson, Duncan Milne, Reni Mihaylova, Aleksandar Ilov, Remigijus Bartasius
+           </p>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block 
+    {% block sidebar %}
+      <div class="col-md-3 col-xs-4 sidebar" style="background-color: #f2f2f2;" align="center">
+         <!-- sidebar -->
+          </br>
+          <h2>Progress</h2>
+          <div class="circle" id="sidebar_circle">
+            <strong>{{ overall_progress }}%</strong>
+          </div>
+          <script>
+              $('#sidebar_circle').circleProgress({
+                  startAngle: -Math.PI/2,
+                  reverse: true,
+                  value: {{ overall_progress }}/100,
+                  size: 150,
+                  thickness: 20,
+                  fill: {
+                      gradient: ["#1da13d", "#1da13d"]
+                  }
+              });
+          </script>
+          <h4>{{ teacher.user.first_name }} {{ teacher.user.last_name }}'s stats</h4>
+          <div class="panel panel-default">
+              <div class="panel-body" align="left">
+                  <h5>Total modules: {{ modules_total }} </h5>
+                  <h5>Total taken: {{ modules_progress|length }} </h5>
+                  <h5>Completed modules: {{ modules_completed|length }} </h5>
+                  <h5>Mistakes made: ? </h5>
+              </div><!-- ./panel-body -->
+          </div><!-- ./panel -->
+
+          <div class="row">
+            <img src="{% static 'img/notification.png' %}" style="width:100px;height:100px"/>
+            <img src="{% static 'img/message.png' %}" style="width:100px;height:100px"/>
+          </div><!-- ./row -->
+      </div>	<!-- ./sidebar -->
+
+    {% endblock %}
+{% endblock %}
+
+</body>
+
+</html>

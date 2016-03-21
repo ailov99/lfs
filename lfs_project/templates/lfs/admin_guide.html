@@ -1,0 +1,99 @@
+{% extends 'lfs/base.html' %}
+{% load staticfiles %}
+{% load bootstrap %}
+{% block title %}Admin Guide{% endblock %}
+{% block body_block %}
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand">
+            <a href="#">
+              Admin Guide
+            </a>
+          </li>
+          <li>
+            <a href="#editingamodule">Editing a Module</a>
+          </li>
+          <li>
+            <a href="#editingpages">Editing Pages</a>
+          </li>
+          <li>
+            <a href="#addingpages">Adding Pages</a>
+          </li>
+          <li>
+            <a href="#promotinguserstoadministrators">Promoting Users to Administrators</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-xs-4"></div>
+        <div class="col-md-9 col-xs-8">
+          <!-- main body -->
+          <div class="row" id="editingamodule">
+          <h2>Admin Guide</h2>          
+          <hr>
+            <h2 class="page-heading ml15 no-mt">Editing a Module</h2>
+            <div class="ml15">
+              <p>There are two ways to edit a module.</p>
+              <p>Method one: By clicking on "Add and Edit Modules" on the home page under admin specific features, all possible modules are displayed.</p>
+              <img class="admin-guide-img" width="100%" src="{% static 'img/addandeditmodule.png' %}" /></br>
+              <p>This will take you to the edit modules page. In the edit modules page clicking on a module will bring up the option to edit or delete the selected module</p>
+              <img class="admin-guide-img" width="100%" src="{% static 'img/selectingmoduletoedit.png' %}" /></br>
+              <p>The following picture is an example of the aftermath of clicking on a module.</p>
+              <img class="admin-guide-img" width="100%" src="{% static 'img/clickeditmodule.png' %}" />
+              <p>Method two: The alternative way of editing a module would be to go to the module itself. This can be done by going to the home page and selecting a module</p>
+              <img class="admin-guide-img" width="100%" src="{% static 'img/selectingamodule.png' %}" />
+              <p>Then when on the module page, selecting "Edit Module"</p>
+              <img class="admin-guide-img" width="100%" src="{% static 'img/editmodule.png' %}" />
+              <p>Following either of these methods will take you to the edit module page for the chosen module. </p>
+              <img class="admin-guide-img" width="100%" src="{% static 'img/editmodulepage.png' %}" />
+              <p>From here it's possible to delete the module, change the module's title, add a new image for the module </p>
+            </div>
+            <div class="ml15" id="editingpages">
+            </br>
+            </br>
+            </br>
+            <h2 class="page-heading no-mt">Editing Pages</h2>
+              <p>To edit a page, go to the edit module page for the module that the page is in and select the page you'd like to edit. Then click edit page. </p>
+              <img class="admin-guide-img" width="100%" src="{% static 'img/editpage.png' %}" />
+              <p>When editing a page it's possible to change the title and also change the content of the page.</p>
+              <p>To add images to a page, simply insert a link into the "Create an image" input box.</p>
+              <img class="admin-guide-img" width="100%" src="{% static 'img/preclickcreatenewimage.png' %}" />
+              <p>To add images to a page, simply insert a link into the "Create an image" input box.</p>
+              <img class="admin-guide-img" width="100%" src="{% static 'img/postclickcreatenewimage.png' %}" />
+              <p>Clicking "Create an image" will auto-generate tags. Copy the tags and link into the "content" box. When you save changes a valid image link with the [img] tags surrounding it will be displayed as an image on the page.</p>
+              <p>When editing pages it's also possible to change their position in a module. When setting page positions you <b><u>must</u></b> ensure that each page has a unique page position. For instance a module can't contain two pages with multiple pages in position one.</p>
+              <p> It's also important to ensure that all numbers are used in positioning. For example if there are pages in positions one and three there must be a page in position two.
+              </div>
+              <div class="ml15" id="addingpages">
+              </br>
+              </br>
+              </br>
+              <h2 class="page-heading no-mt">Adding Pages</h2>
+                <p>To add a page to a module, simply go to the edit module page that you'd like to add a page to and click "Add Page". To get to the module of your choice, follow the guide above. </p>
+                <img class="admin-guide-img" width="100%" src="{% static 'img/addpagebutton.png' %}" />
+                <p>When adding a page you must chose the position you'd like, chose a title for the page and enter the content. An example is below. To display an image please see the "edit page" section.</p>
+                <img class="admin-guide-img" width="100%" src="{% static 'img/addpagescreen.png' %}" />
+              </div>
+              <div class="ml15" id="promotinguserstoadministrators">
+              </br>
+              </br>
+              </br>
+              <h2 class="page-heading no-mt">Promoting Users to Administrators</h2>
+                <p>To promote another user to an administrator, go to the home screen and press "Change User Privileges"</p>
+                <img class="admin-guide-img" width="100%" src="{% static 'img/ChangeUserPrivelegesButton.png' %}" />
+                <p>This will take you to a list of users, on this page the users current privileges are displayed. To promote/demote a user press "Change User Privileges" next to the user who you'd like to premote/demote.</p>
+              </div>
+              </br>
+              </br>
+              </br>
+            </div>
+          </div>
+          <!--/.row-->
+        </div>
+        <!--/.container-->
+      </div>
+    {% endblock %}

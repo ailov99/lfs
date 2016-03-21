@@ -1,0 +1,46 @@
+{% load i18n %}
+<div id="poll-type" style="margin-left: 20px; margin-right: 20px; width: 60%;">
+{% include "pybb/form_field.html" with field=form.poll_type %}
+</div>
+<div id="poll-question" style="margin-left: 20px; margin-right: 20px; width: 60%;">
+  {% include "pybb/form_field.html" with field=form.poll_question %}
+</div>
+<div id="poll-answers-formset">
+<div style="margin-left: 20px; margin-right: 20px; width: 60%;">
+  <br>{% trans 'Poll answers' %}
+    {% include "pybb/form_errors.html" with form=pollformset %}
+    {% for form_answer in pollformset %}
+        <div class="poll-answer-form">
+            {% include "pybb/form.html" with form=form_answer hide_labels=1 %}
+        </div>
+    {% endfor %}
+  {{ pollformset.management_form }}
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.js"></script>
+<script type="text/javascript">
+  window.onload = function () {
+    $('div#poll-answers-formset div.poll-answer-form').formset({
+      deleteText:'{% trans 'remove answer' %}',
+      addText:'{% trans 'add answer' %}',
+      prefix: 'poll_answers'
+    });
+
+    var toggle_poll_answers_formset = function (poll_type) {
+      if (poll_type === "0") {
+        $('div#poll-answers-formset').hide();
+        $('div#poll-question').hide();
+      } else {
+        $('div#poll-answers-formset').show();
+        $('div#poll-question').show();
+      }
+    };
+
+    $('#id_poll_type').each(function () {
+      toggle_poll_answers_formset($(this).val());
+    }).change(function () {
+      toggle_poll_answers_formset($(this).val());
+    });
+  };
+</script>

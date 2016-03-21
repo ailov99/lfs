@@ -1,0 +1,50 @@
+
+.sidebar {
+  position: fixed;
+  bottom: -10px;
+  top: 0;
+  right: 0;
+  display: inline;
+  float: right;
+  display: block;
+	padding: 20px;
+  z-index: 0;
+
+
+  /*shadows to give depth*/
+  -webkit-box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
+  -moz-box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
+  box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
+}
+
+.image_container {
+   position: relative;
+}
+
+h3 {
+   position: absolute;
+   top: 105px;
+   left: 0;
+   width: 100%;
+}
+
+h3 span {
+   color: white;
+   font: bold 16px/37px Helvetica, Sans-Serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0);
+   background: rgba(0, 0, 0, 0.7);
+   padding: 8px;
+}
+
+.navbar{
+  z-index: 3;
+}
+
+.border {
+    outline: 1px solid #f2f2f2;
+}
+
+span a {
+    color: white;
+}

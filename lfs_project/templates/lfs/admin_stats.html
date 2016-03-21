@@ -1,0 +1,52 @@
+{% extends 'lfs/base.html' %}
+{% load staticfiles %}
+{% block title %}Content{% endblock %}
+{% block body_block %}
+<div class="container">
+  <div class="row">
+    <style>
+      .bar {
+        fill: steelblue;
+      }
+
+      .bar:hover {
+        fill: brown;
+      }
+
+      .axis {
+        font: 10px sans-serif;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+
+      .x.axis path {
+        display: none;
+      }
+
+      .line {
+        fill: none;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+      }
+    </style>
+
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="{% static 'js/admin_stats.js' %}" type="text/javascript"></script>
+    <script>
+      var modules_data={{ modules_data|safe }};
+      var regs_data={{ regs_data|safe }};
+      var anon_hits_data={{ anon_hits_data|safe }};
+      
+      gen_modules_barchart(modules_data);
+      gen_regs_linechart(regs_data);
+      gen_anon_hits_linechart(anon_hits_data);
+    </script>
+   
+  </div> <!--/.row-->
+</div> <!--/.container-->
+{% endblock %}

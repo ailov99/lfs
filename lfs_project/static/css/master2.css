@@ -1,0 +1,302 @@
+/********************* Colour reference chart*********************
+Type ********************** Colour *******************************
+
+Primary colour              #1da13d
+Primary colour :hover       #1da17f
+Primary colour :active      #7f1da1
+
+Secondary colour            #f69909
+Secondary colour :hover     #f8b752
+Secondary colour :active    #7f1da1
+
+*/
+
+/*--------------------
+  Body
+  --------------------*/
+body {
+  background: #fafdfb;
+  padding-top: 50px;
+}
+
+/*--------------------
+  Navbar
+  --------------------*/
+.navbar {
+  z-index: 3;
+  color: #fff;
+  background-color: #449d44;
+  border-color: #255625;
+  border-width: 0px 0px 2px 0px;
+
+  -webkit-box-shadow: 0px 4px 10px rgba(0,0,0,0.59);
+  -moz-box-shadow: 0px 4px 10px rgba(0,0,0,0.59);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.59);
+}
+
+.navbar-default .navbar-header > a > img {
+  width: auto;
+  height: 50px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+  font-size: 120%;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 0px 0px 2px 4px;
+  border-radius: 3px;
+  border-color: rgba(0,0,0,0.10);
+}
+
+.navbar-default .navbar-nav > li:hover, .navbar-default .navbar-nav > .active > a:hover {
+  background: #1da13d;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > .active > a:hover {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li:active, .navbar-default .navbar-nav > li:focus, .navbar-default .navbar-nav > .active > a {
+    background: #009900;
+}
+.navbar-default .navbar-nav > li > a:active, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > .active > a {
+  color: white;
+}
+
+.custom-navbar {
+  background-image: linear-gradient(white, #b1d9f4);
+  border: #DBE6AF;
+}
+
+/*--------------------
+  Sidebar
+  --------------------*/
+.sidebar {
+  position: fixed;
+  bottom: -10px;
+  top: 0;
+  right: 0;
+  display: inline;
+  float: right;
+  display: block;
+  padding: 20px;
+  z-index: 0;
+
+
+  /*shadows to give depth*/
+  -webkit-box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
+  -moz-box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
+  box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
+}
+
+/*--------------------
+  Module panels
+  --------------------*/
+
+
+#module-tabs a {
+  color: black;
+}
+
+.image_container h3 {
+   position: absolute;
+   top: 105px;
+   left: 0;
+   width: 100%;
+}
+
+#panel-text {
+   color: white;
+   font: bold 16px/37px Helvetica, Sans-Serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0);
+   background: rgba(0, 0, 0, 0.7);
+   padding: 8px;
+}
+
+.right {
+  float: right;
+}
+
+/*--------------------
+  Progress Bar
+  --------------------*/
+
+.progress {
+  width: 75%;
+  margin-top: 3px;
+}
+
+#module-progress-bar {
+  text-align: center;
+  font-size: 105%;
+}
+
+
+
+#module-progress {
+  width: 100%;
+  margin-bottom: 0px;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0,0,0,0.8);
+}
+
+/*--------------------
+  Headings
+  --------------------*/
+
+
+/*--------------------
+  Containers
+  --------------------*/
+.login-container {
+  margin-left:38%;
+}
+
+.image_container {
+  position: relative;
+}
+
+/*--------------------
+  Random stuff
+  --------------------*/
+.border {
+  outline: 1px solid #1da17f;
+}
+
+.no-underline, .no-underline:hover, .no-underline:active, .no-underline:link, .no-underline:visited {
+  text-decoration: none;
+}
+
+.page-heading {
+  color: lightgrey;
+}
+
+form a {
+  color: black;
+}
+
+ .downloadables {
+  color: black;
+}
+
+/*--------------------
+  IDs
+  --------------------*/
+/*#username {
+  border-radius: 10px;
+  width:40%;
+  height:8%;
+  font-size:180%;
+  font-weight:normal;
+}
+
+#password {
+  border-radius:10px;
+  width:40%;
+  height: 8%;
+  font-size:180%;
+  font-weight:normal;
+  margin-top: 5%;
+}
+*/
+#login {
+  padding-top:2%;
+  margin:auto;
+}
+
+#login-button {
+  width: 100%;
+  margin-top: 5%;
+  border-radius: 5px;
+  height: 45px;
+  background-image: linear-gradient(#88EE88, #009933);
+  color: white;
+  border-color: #009933;
+}
+
+#register-button {
+  width: 100%;
+  margin-top: 5%;
+  border-radius: 5px;
+  height: 45px;
+  background-image: linear-gradient(#009933, #99CC33);
+  color: white;
+  border-color: #009933;
+}
+
+.centre {
+  width: 50%;
+  margin: auto;
+}
+
+.100width {
+  width: 100%;
+}
+
+#category-select {
+  background-color: #1da13d;
+  color: white;
+
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   border: 1px solid #ccc;
+   text-align: center;
+   height: 3%;
+   min-height: 25px;
+}
+
+/*--------------------
+  Leaderboards
+  --------------------*/
+
+.container.leaderboard {
+  width: 70%;
+  padding-right: 20%;
+  z-index: 0;
+}
+
+#title {
+  padding-right: 25%;
+  width: 120%;
+}
+
+.display.mydisplay {
+  z-index: -1;
+}
+
+
+#currentuser {
+  background-color: #1DA13D;
+  color: white;
+}
+
+.invisible-text {
+  color:transparent;
+  align: center;
+}
+
+td {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+
+.leaderboard-progress{
+  font-size: 0%;
+  text-align: center;
+}
+
+/*--------------------
+  User List
+  --------------------*/
+
+.user-list-names, .user-list-names:hover, .user-list-names:active, .user-list-names:link, .user-list-names:visited {
+  text-decoration: none;
+  color: black;
+}

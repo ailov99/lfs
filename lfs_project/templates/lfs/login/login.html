@@ -1,0 +1,162 @@
+{% extends 'lfs/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body_block %}
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<!-- Indicators -->
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>
+
+	<div class="carousel-inner" role="listbox">
+		<div class="item active">
+			<img class="first-slide" src="{% static 'img/welcome2.png' %}" alt="First slide" style="width:100%;">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Welcome</h1>
+					<p>
+						Here you will be provided with a online training programme that will assist you to incorporate
+						Learning for Sustainability within the curriculum, and to allow you to become leaders in implementing
+						sustainable development within your institutions.
+					</p>
+					<p><a class="btn btn-lg btn-prim" href="{% url 'register' %}" role="button">Sign up today</a></p>
+				</div><!--./carousel-caption-->
+			</div><!--./container-->
+		</div><!--./carousel-inner-->
+		<div class="item">
+			<img class="second-slide" src="{% static 'img/welcome.png' %}" alt="Second slide" style="width:100%;">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Learn the new curriculum</h1>
+					<p>Lots of great content including diagrams and videos to get brushed up on the new curriculum.</p>
+					<a class="btn btn-lg btn-prim" href="{% url 'register' %}" role="button">Sign up today</a>
+				</div><!--./carousel-caption-->
+			</div><!--./container-->
+		</div><!--./item-->
+		<div class="item">
+			<img class="third-slide" src="{% static 'img/welcome3.png' %}" alt="Third slide" style="width:100%;">
+			<div class="container">
+				<div class="carousel-caption">
+					<h1>Quiz up</h1>
+					<p>Test yourself with our quizzes on each module. </p>
+					<a class="btn btn-lg btn-prim" href="{% url 'register' %}" role="button">Sign up today</a>
+				</div><!--./carousel-caption-->
+			</div><!--./container-->
+		</div><!--./item-->
+	</div><!--./carousel-inner-->
+	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div><!-- /.carousel -->
+<br>
+
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-7  col-sm-7">
+				<h3>Learn the new curriculum</h3>
+				<p>Lots of great content including diagrams and videos to get brushed up on the new curriculum. </p>
+				<br>
+			</div><!-- ./col-md-7 -->
+			<div class="col-md-4  col-sm-4" align="center">
+				<img class="img img-responsive" src="{% static 'img/co2.png' %}" style="width:200px;height:200px;"/>
+			</div><!-- ./col-md-4 -->
+		</div><!--./row-->
+
+		<div class="row">
+			<div class="col-md-4 col-sm-4" align="center">
+				<img class="img-circle img-responsive" src="{% static 'img/homer.jpg' %}" style="width:200px;height:200px;"/>
+			</div><!-- ./col-md-4 -->
+			<div class="col-md-8  col-sm-8">
+				<h3>Quiz up</h3>
+				<p>Test yourself with our quizzes on each module. </p>
+				<br>
+			</div><!--./col-md-8-->
+		</div><!--./row-->
+
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-7  col-sm-7">
+				<h3>Choose want you want to learn</h3>
+				<p>Modify your choices to learn the content you want. </p>
+				<br>
+			</div><!-- ./col-md-7 -->
+			<div class="col-md-4  col-sm-4" align="center">
+				<img class="img-circle img-responsive" src="{% static 'img/welcome.png' %}" style="width:200px;height:200px;"/>
+			</div><!-- ./col-md-4 -->
+		</div><!--./row-->
+
+		<div class="row">
+			<div class="col-md-4 col-sm-4" align="center">
+				<img class="img img-responsive" src="{% static 'img/modules.png' %}" style="width:200px;height:200px;"/>
+			</div><!-- ./col-md-4 -->
+			<div class="col-md-8  col-sm-8">
+				<h3>Track your progress</h3>
+				<p>Keep track of your progress with progress bars.</p>
+				<br>
+			</div><!-- ./col-md-8 -->
+		</div><!--./row-->
+
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-7  col-sm-7">
+				<h3>Compete with others</h3>
+				<p>See how well you are doing by comparing your progress with others on our leaderboards. </p>
+				<br>
+			</div><!-- ./col-md-7 -->
+			<div class="col-md-4  col-sm-4" align="center">
+				<img class="img-circle img-responsive" src="{% static 'img/leaderboard2.png' %}" style="width:200px;height:200px;"/>
+			</div><!-- ./col-md-4 -->
+		</div><!--./row-->
+
+		<div class="row">
+			<div class="col-md-4  col-sm-4" align="center">
+				<img class="img-circle img-responsive" src="{% static 'img/welcome.png' %}" style="width:200px;height:200px;"/>
+			</div><!-- ./col-md-4 -->
+			<div class="col-md-8  col-sm-8">
+				<h3>Discuss</h3>
+				<p>Discuss and ask questions on our discussion forum to enhance your understanding.</p>
+				<br>
+			</div><!-- ./col-md-8 -->
+		</div><!--./row-->
+
+		<div id="login" class="col-md-12  col-sm-12" align="center">
+			<h3>Log in or Register</h3>
+			<div class="centre">
+				<form action="#login" enctype="multipart/form-data" method="POST" id="login_form">
+					{% csrf_token %}
+					<label class="control-label" for="id_username">Username</label>
+					<input class=" form-control" id="id_username" maxlength="30" name="username" type="text">
+					{% csrf_token %}
+					<label class="control-label" for="id_password">Password</label>
+					<input class=" form-control" id="id_password" name="password" type="password">
+				</form>
+				<div class="error-messages">
+				{% if errors %}
+				Invalid login details, please enter a valid username and password.
+				{% endif %}
+				</div>
+				<button type="submit" form="login_form" value="Submit" id="login-button">Log in</button>
+				<form action="/lfs/register/" method="GET">
+					<button type="submit" id="register-button">New user? Register here</button>
+				</form>
+			</div><!-- ./centre -->
+
+		</div><!-- ./col-md-12 -->
+		<p id="footer" align="center">Created by a software engineering team from Glasgow University</p>
+
+	</div><!-- ./container -->
+
+{% endblock %}

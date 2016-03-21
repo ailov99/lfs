@@ -1,0 +1,73 @@
+{% extends 'lfs/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Modify_Choices{% endblock %}
+
+{% block body_block %}
+
+	<div class="container">
+		<h1 class="page-heading">Modify Choices</h1>
+		<hr>
+		{% if not is_admin %}
+		<div class="page-header">
+			<h2>Modules you are taking </h2>
+
+		</div><!-- ./page-header -->
+		<div class="row placeholders">
+			<div class="col-xs-12 col-sm-6 placeholder">
+				<p style="color: grey;">Note: progress will be lost when a module is removed</p>
+				{% if modules_taken %}
+					<ul class="list-group">
+						{% for module in modules_taken %}
+							<span type="button" class="list-group-item">
+							    <a href="{% url 'module' module.id %}">{{ module.title }}</a>
+								{% if not module.compulsory %}
+                                    <a href="{% url 'drop_module' module.id %}" class="badge right">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Remove</a>
+                                {% else %}
+                                    <span class="badge right" aria-hidden="true">Compulsory</span>
+                                {% endif %}
+							</span>
+						{% endfor %}
+					</ul>
+				{% else %}
+					<strong>You are not taking any modules</strong>
+				{% endif %}
+			</div><!-- ./col-xs-12 -->
+		</div><!-- ./row -->
+
+		<div class="page-header">
+			<h2>Other Modules</h2>
+		</div><!-- ./page-header -->
+
+		{% else %}
+		<!-- add module button -->
+		{% endif %}
+		<div class="row placeholders">
+			<div class="col-xs-12 col-sm-6 placeholder">
+				{% if modules %}
+					<ul class="list-group">
+						{% for module in modules %}
+							<span type="button" class="list-group-item">
+								<a href="{% url 'module' module.id %}">{{ module.title }}</a>
+							{% if not is_admin %}
+								<a href="{% url 'pick_module' module.id %}" class="badge right">
+								<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Add</a>
+							{% endif %}
+
+							</span>
+						{% endfor %}
+					</ul>
+				{% else %}
+					<strong>There are no modules to display</strong><br/>
+				{% endif %}
+				<a href="{% url 'index' %}" type="submit" class="btn btn-prim">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Done
+				</a>
+
+			</div><!-- ./col-xs-12 -->
+		</div> <!-- ./row -->
+	</div><!-- ./container -->
+
+{% endblock %}

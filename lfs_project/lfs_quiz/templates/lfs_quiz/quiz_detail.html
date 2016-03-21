@@ -1,0 +1,51 @@
+{% extends 'lfs/base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}
+{{ quiz.title }}
+{% endblock %}
+
+{% block body_block %}
+    <div class="container">
+    <div class="col-md-9 col-xs-8 border content-box">
+
+    <h2>{{ quiz.title }}</h2>
+    {% if quiz.single_attempt %}
+      <h4>You will only get one attempt at this quiz.</h4>
+    {% endif %}
+    <p>{{ quiz.description }}</p>
+    <p>
+      <a href="{% url 'quiz_question' moduleid=quiz.module.id %}">
+        Start quiz
+      </a>
+    </p>
+
+    </div>
+
+    {% block sidebar %}
+
+      <div class="col-md-3 col-xs-4 sidebar" style="background-color: #f2f2f2;" align="center">
+        <!-- sidebar -->
+        </br>
+        <h2>Progress of Quiz</h2>
+        <div class="circle" id="sidebar_circle">
+          <strong>0%</strong>
+        </div>
+        <script>
+            $('#sidebar_circle').circleProgress({
+                startAngle: -Math.PI/2,
+                reverse: true,
+                value: 0,
+                size: 150,
+                thickness: 20,
+                fill: {
+                    gradient: ["green", "green"]
+                }
+            });
+        </script>
+        </div>  <!-- ./sidebar -->
+
+    {% endblock %}
+
+    </div>
+{% endblock %}

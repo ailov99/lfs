@@ -1,0 +1,46 @@
+{% extends 'lfs/base.html' %}
+
+{% load staticfiles %}
+
+{% load bootstrap %}
+
+{% block title %}Add_Page{% endblock %}
+
+{% block body_block %}
+
+<script src="{% static 'js/editpage.js' %}" type="text/javascript"></script>
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <h2 class="page-heading">Edit Page</h2>
+      <hr>
+
+      <p class="help-block">Input link to image below and it will generate a tag to copy into the content of the page.</p>
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button id="imageCreate" class="btn btn-prim" type="button">Create an image!</button>
+        </span>
+        <input id="imageLink" type="text" class="form-control" placeholder="e.g 'http://www.google.com/image.png'">
+      </div><!-- /input-group -->
+      <br>
+
+      <form id="module_form" method="post" action="{% url 'edit_page' page_id %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ page_form|bootstrap }}
+
+        <button type="submit" name="submit" class="btn btn-prim">
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

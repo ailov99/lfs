@@ -1,0 +1,26 @@
+{% extends 'lfs/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Forum{% endblock %}
+
+{% block body_block %}
+
+<div class="container">
+
+   <div class="row">
+
+     <div class="col-md-9 col-xs-8">
+       <!-- main body -->
+       <h2>Forum</h2>
+       <hr>
+
+     </div><!--./col-md-9-->
+
+{% block sidebar %} {{ block.super }} {% endblock %}
+
+   </div> <!--/.row-->
+
+ </div> <!--/.container-->
+
+{% endblock %}

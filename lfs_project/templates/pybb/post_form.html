@@ -1,0 +1,33 @@
+{% load i18n pybb_tags staticfiles %}
+<form class="post-form" action="
+    {% if forum %}
+        {% url 'pybb:add_topic' forum.pk %}
+    {% else %}
+        {% if topic %}
+            {% url 'pybb:add_post' topic.pk %}
+        {% else %}
+            {% url 'pybb:edit_post' pk=object.pk %}
+        {% endif %}
+    {% endif %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <fieldset>
+    {% include "pybb/form_errors.html" %}
+    {% if form.name %} <div id='form_name' style="margin-left: 20px; margin-right: 20px; width: 60%;" >{% include "pybb/form_field.html" with field=form.name %} </div>{% endif %}
+    {% if form.slug %} <div id='form_slug' style="margin-left: 20px; margin-right: 20px; width: 60%;" >{% include "pybb/form_field.html" with field=form.slug %} </div>{% endif %}
+    {% if form.login %} <div id='form_login' style="margin-left: 20px; margin-right: 20px; width: 60%;" >{% include "pybb/form_field.html" with field=form.login %}  </div>{% endif %}
+    {% if form.body %} <div id='form_body' style="margin-left: 20px; margin-right: 20px; width: 60%;" >{% include "pybb/form_field.html" with field=form.body %}  </div>{% endif %}
+    <div id='emoticons' style="margin-left: 20px; margin-right: 20px; ">
+    {% for smile, url in form.available_smiles.items %}
+        {% with form.smiles_prefix|add:url as static_smiley %}
+            <a href='#' title='{{ smile|safe }}'><img src='{% static static_smiley %}'></a>
+        {% endwith %}
+    {% endfor %}
+    </div>
+
+    {% if request.user|pybb_may_create_poll and form.poll_type %}
+      {% include "pybb/poll_edit_form.html" %}
+    {% endif %}
+    {% include "pybb/attachments_formset.html" %}
+    <p class="submit" style="margin-left: 20px;">{% include "pybb/_button_submit.html" %}</p>
+  </fieldset>
+</form>

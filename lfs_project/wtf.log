@@ -1,0 +1,401 @@
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/pybb/urls.py:21: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url('^feeds/topics/$', LastTopics(), name='feed_topics'),
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/pybb/urls.py:32: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got block_user). Pass the callable instead.
+  url('^block_user/([^/]+)/$', 'block_user', name='block_user'),
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/pybb/urls.py:33: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got unblock_user). Pass the callable instead.
+  url('^unblock_user/([^/]+)/$', 'unblock_user', name='unblock_user'),
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/pybb/urls.py:65: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got delete_subscription). Pass the callable instead.
+  'delete_subscription', name='delete_subscription'),
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/pybb/urls.py:67: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got add_subscription). Pass the callable instead.
+  'add_subscription', name='add_subscription'),
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/pybb/urls.py:70: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got post_ajax_preview). Pass the callable instead.
+  url('^api/post_ajax_preview/$', 'post_ajax_preview', name='post_ajax_preview'),
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/pybb/urls.py:73: RemovedInDjango110Warning: Support for string view arguments to url() is deprecated and will be removed in Django 1.10 (got mark_all_as_read). Pass the callable instead.
+  url('^mark_all_as_read/$', 'mark_all_as_read', name='mark_all_as_read')
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/pybb/urls.py:73: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url('^mark_all_as_read/$', 'mark_all_as_read', name='mark_all_as_read')
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:26: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^forum/', include('pybb.urls', namespace='pybb')),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/utils.py:37: RemovedInDjango110Warning: You haven't defined a TEMPLATES setting. You must do so before upgrading to Django 1.10. Otherwise Django will be unable to load templates.
+  "unable to load templates.", RemovedInDjango110Warning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/bootstrapform/templatetags/bootstrap.py:80: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return template.render(context)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py:1453: RuntimeWarning: DateTimeField Comment.time received a naive datetime (2016-03-16 12:22:20.589988) while time zone support is active.
+  RuntimeWarning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/smartif.py:168: RemovedInDjango110Warning: Operator '=' is deprecated and will be removed in Django 1.10. Use '==' instead.
+  mapped_tokens.append(self.translate_token(token))
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/utils.py:37: RemovedInDjango110Warning: You haven't defined a TEMPLATES setting. You must do so before upgrading to Django 1.10. Otherwise Django will be unable to load templates.
+  "unable to load templates.", RemovedInDjango110Warning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/bootstrapform/templatetags/bootstrap.py:80: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return template.render(context)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py:1453: RuntimeWarning: DateTimeField Comment.time received a naive datetime (2016-03-16 12:38:26.513091) while time zone support is active.
+  RuntimeWarning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/smartif.py:168: RemovedInDjango110Warning: Operator '=' is deprecated and will be removed in Django 1.10. Use '==' instead.
+  mapped_tokens.append(self.translate_token(token))
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/utils.py:37: RemovedInDjango110Warning: You haven't defined a TEMPLATES setting. You must do so before upgrading to Django 1.10. Otherwise Django will be unable to load templates.
+  "unable to load templates.", RemovedInDjango110Warning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/bootstrapform/templatetags/bootstrap.py:80: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return template.render(context)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py:1453: RuntimeWarning: DateTimeField Comment.time received a naive datetime (2016-03-16 12:39:13.064105) while time zone support is active.
+  RuntimeWarning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/smartif.py:168: RemovedInDjango110Warning: Operator '=' is deprecated and will be removed in Django 1.10. Use '==' instead.
+  mapped_tokens.append(self.translate_token(token))
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/utils.py:37: RemovedInDjango110Warning: You haven't defined a TEMPLATES setting. You must do so before upgrading to Django 1.10. Otherwise Django will be unable to load templates.
+  "unable to load templates.", RemovedInDjango110Warning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/bootstrapform/templatetags/bootstrap.py:80: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return template.render(context)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py:1453: RuntimeWarning: DateTimeField Comment.time received a naive datetime (2016-03-16 12:39:40.379970) while time zone support is active.
+  RuntimeWarning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/smartif.py:168: RemovedInDjango110Warning: Operator '=' is deprecated and will be removed in Django 1.10. Use '==' instead.
+  mapped_tokens.append(self.translate_token(token))
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/utils.py:37: RemovedInDjango110Warning: You haven't defined a TEMPLATES setting. You must do so before upgrading to Django 1.10. Otherwise Django will be unable to load templates.
+  "unable to load templates.", RemovedInDjango110Warning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/bootstrapform/templatetags/bootstrap.py:80: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return template.render(context)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py:1453: RuntimeWarning: DateTimeField Comment.time received a naive datetime (2016-03-16 12:40:32.113287) while time zone support is active.
+  RuntimeWarning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/smartif.py:168: RemovedInDjango110Warning: Operator '=' is deprecated and will be removed in Django 1.10. Use '==' instead.
+  mapped_tokens.append(self.translate_token(token))
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/utils.py:37: RemovedInDjango110Warning: You haven't defined a TEMPLATES setting. You must do so before upgrading to Django 1.10. Otherwise Django will be unable to load templates.
+  "unable to load templates.", RemovedInDjango110Warning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/bootstrapform/templatetags/bootstrap.py:80: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return template.render(context)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py:1453: RuntimeWarning: DateTimeField Comment.time received a naive datetime (2016-03-16 12:40:38.338223) while time zone support is active.
+  RuntimeWarning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/smartif.py:168: RemovedInDjango110Warning: Operator '=' is deprecated and will be removed in Django 1.10. Use '==' instead.
+  mapped_tokens.append(self.translate_token(token))
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/utils.py:37: RemovedInDjango110Warning: You haven't defined a TEMPLATES setting. You must do so before upgrading to Django 1.10. Otherwise Django will be unable to load templates.
+  "unable to load templates.", RemovedInDjango110Warning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/bootstrapform/templatetags/bootstrap.py:80: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return template.render(context)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py:1453: RuntimeWarning: DateTimeField Comment.time received a naive datetime (2016-03-16 12:40:43.614049) while time zone support is active.
+  RuntimeWarning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/smartif.py:168: RemovedInDjango110Warning: Operator '=' is deprecated and will be removed in Django 1.10. Use '==' instead.
+  mapped_tokens.append(self.translate_token(token))
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/utils.py:37: RemovedInDjango110Warning: You haven't defined a TEMPLATES setting. You must do so before upgrading to Django 1.10. Otherwise Django will be unable to load templates.
+  "unable to load templates.", RemovedInDjango110Warning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/bootstrapform/templatetags/bootstrap.py:80: RemovedInDjango110Warning: render() must be called with a dict, not a Context.
+  return template.render(context)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/db/models/fields/__init__.py:1453: RuntimeWarning: DateTimeField Comment.time received a naive datetime (2016-03-16 12:40:49.640467) while time zone support is active.
+  RuntimeWarning)
+
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/smartif.py:168: RemovedInDjango110Warning: Operator '=' is deprecated and will be removed in Django 1.10. Use '==' instead.
+  mapped_tokens.append(self.translate_token(token))
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/views.py:109: RemovedInDjango110Warning: `lfs_quiz.views.QuizTake.get_form` method must define a default value for its `form_class` argument.
+  class QuizTake(FormView):
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs/urls.py:36: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^messages/(?P<messageid>[\w\-]+)/send/$', views.message_send, name="send_message"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_admin/urls.py:19: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^promote_user/(?P<userid>[\w\-]+)$', views.promote_user, name="promote_user"),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_quiz/urls.py:29: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  name='quiz_marking_detail'),
+
+WARNING:py.warnings:/home/ailov/workspace/old_django/lfs_project/lfs_project/urls.py:25: RemovedInDjango110Warning: django.conf.urls.patterns() is deprecated and will be removed in Django 1.10. Update your urlpatterns to be a list of django.conf.urls.url() instances instead.
+  url(r'^quizzes/', include('lfs_quiz.urls')),
+
+WARNING:django.request:Not Found: /lfs/login
+WARNING:django.request:Not Found: /favicon.ico
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/django/template/smartif.py:168: RemovedInDjango110Warning: Operator '=' is deprecated and will be removed in Django 1.10. Use '==' instead.
+  mapped_tokens.append(self.translate_token(token))
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+

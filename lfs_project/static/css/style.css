@@ -1,0 +1,58 @@
+#username {
+	border-radius: 10px;	
+	width:40%;
+	height:8%;
+	font-size:180%;
+	font-weight:normal;
+}
+
+#password {
+	border-radius:10px;	
+	width:40%;
+	height: 8%;
+	font-size:180%;
+	font-weight:normal;
+	margin-top: 5%;
+}
+
+#login {
+	padding-top:2%;	
+	margin:auto;
+}	
+
+#login-button {
+	width: 40%;
+	margin-top: 5%;
+	border-radius: 15px;
+	height: 45px;
+    background-image: linear-gradient(#DBE6AF, #60b044);
+	color: white;    
+	border-color: #60b044;
+}
+
+#register-button {
+	width: 40%;
+	margin-top: 5%;
+	border-radius: 15px;
+	height: 45px;
+    background-image: linear-gradient(#DBE6AF, #EDB579);
+	color: white;
+	border-color: 	#EDB579;
+}
+
+.login-container{
+	margin-left:38%;
+}
+
+body { 
+  background: url(../images/temp_background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.custom-navbar {
+    background-image: linear-gradient(white, #b1d9f4);
+	border: #DBE6AF;
+}

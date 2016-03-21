@@ -1,0 +1,35 @@
+{% extends 'lfs/base.html' %}
+{% load staticfiles %}
+{% load bootstrap %}
+{% block title %}Edit Profile {% endblock %}
+{% block body_block %}
+	<!--possibly insert link to change pass-->
+	<div class="container">
+		<div class="col-md-12">
+			<h2 class="page-heading">Edit Profile</h2>
+			<hr>
+			{% if message %}
+				<div class="alert alert-danger">
+					{{message}}
+				</div>
+			{% endif %}
+			<div id="edit-profile">
+				<form id="user_form" method="post" action="{% url 'edit_profile' user.id %}"
+					enctype="multipart/form-data">
+					{% csrf_token %}
+					{{ user_form|bootstrap }}
+					{% if message %}
+						<div class="error-messages">
+							{{message}}
+						</div>
+					{% else %}
+						<li>Required</li>
+					{% endif %}
+					</br></br>
+					{{teacher_form|bootstrap}}
+					<button id="login-button" class="edit-profile-submit" type="submit" name="submit"> Submit Changes </button>
+				</form>
+			</div><!-- ./edit-profile -->
+		</div><!-- ./col-md-12 -->
+	</div><!-- ./container -->
+{% endblock %}
