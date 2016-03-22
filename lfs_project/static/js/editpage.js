@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 	      var link = $("#imageLink").val()
 
-	      $('#imageLink').val('[img]' + link + '[/img]');
+	      $('#imageLink').val('<img src="' + link + '"/>');
 
 	});
 });

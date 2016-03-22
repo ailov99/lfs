@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView, TemplateView, FormView
 from django.http import HttpResponseRedirect
 
+from lfs.models import Takers
 from .forms import QuestionForm
 from .models import Quiz, Module, Progress, Sitting, Question
 
@@ -206,6 +207,10 @@ class QuizTake(FormView):
         if self.quiz.exam_paper is False:
             self.sitting.delete()
 
+        taker = Takers.objects.get(user=self.request.user, module=self.quiz.module)
+        taker.progress = 100
+        taker.save()
+
         return render(self.request, 'result.html', results)
 
 
@@ -305,7 +310,12 @@ class QuizTake(FormView):
 
         del self.request.session[self.quiz.anon_q_data()]
 
-        return render(self.request, 'result.html', results)
+        response = render(self.request, 'result.html', results)
+
+        title = str(self.quiz.module.title).replace(' ', '_')
+        response.set_cookie(title, 100)
+
+        return response
 
 
 def anon_session_score(session, to_add=0, possible=0):

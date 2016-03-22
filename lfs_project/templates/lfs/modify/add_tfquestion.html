@@ -1,0 +1,38 @@
+{% extends 'lfs/base.html' %}
+
+{% load staticfiles %}
+
+{% load bootstrap %}
+
+{% block title %}Add_TFQuestion{% endblock %}
+
+{% block body_block %}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <h2 class="page-heading">Add Question: True False</h2>
+                <hr>
+
+                <form id="tf_form" method="post" action="{% url 'add_tfquestion' quiz_id %}"
+                      enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ tf_form|bootstrap }}
+
+                    <a href="{% url 'edit_quiz' quiz_id %}" type="button" class="btn btn-prim"><span
+                            class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
+                    <button type="submit" name="submit" class="btn btn-prim">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

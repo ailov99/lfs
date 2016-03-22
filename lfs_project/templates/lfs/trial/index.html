@@ -12,12 +12,13 @@
         <h2>Modules</h2>
         <hr>
         <div class="row">
+
           {% if modules_progress %}
             {% for mod, prog in modules_progress.items %}
             <div class="col-md-3 col-sm-6 col-xs-12 module"><a class="no-underline" href="{% url 'trial_module' mod.id %}">
               <div class="panel panel-module {% if prog == 0 %}new{% elif prog != 100 %}attempted{% endif %}">
                 <div class="panel-heading">{{ mod.title }}</div>
-                <div class="panel-body" {% if mod.background %}style="background-image: url(/{{ mod.background }})"{% endif %}> <!--Module background image should be placed here--->
+                <div class="panel-body" style="background-image: {% if mod.background %}url(/{{ mod.background }}){% else %}url({% static 'img/example.png' %}){% endif %}">
                   {% if prog == 100 %}<i id="module-tick" class="fa fa-check fa-2x"></i>{% endif %}
                 </div><!--./panel-body-->
                 <div class="panel-footer">
@@ -34,13 +35,11 @@
             <strong> There are currently no trial modules </strong>
           {% endif %}
           </div><!--./row-->
-          <br/>
           <div class="row">
               <a class="btn btn-prim" data-toggle="tooltip" data-placement="right" title="You must be a registered user to be able to pick modules" data-delay='{"show":"500", "hide":"300"}'>
                 <i class="fa fa-book"></i> Modify Choices
               </a>
           </div><!--./row-->
-        </br>
       </div><!--./col-md-9-->
       {% block sidebar %} {{ block.super }} {% endblock %}
     </div> <!--/.row-->

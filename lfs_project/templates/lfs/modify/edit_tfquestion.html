@@ -1,0 +1,44 @@
+{% extends 'lfs/base.html' %}
+
+{% load staticfiles %}
+
+{% load bootstrap %}
+
+{% block title %}Edit_TFQuestion{% endblock %}
+
+{% block body_block %}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <h2 class="page-heading">Edit Question: True False</h2>
+                <hr>
+                <!-- main body -->
+                <a href="{% url 'delete_tfquestion'  tf_id %}" type="button" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete Question
+                </a>
+                <form id="tf_form" method="post" action="{% url 'edit_tfquestion' tf_id quiz_id %}"
+                      enctype="multipart/form-data">
+                    <p class="help-block">Please make your changes below.</p>
+                    {% csrf_token %}
+
+                    {{ tf_form|bootstrap }}
+
+                    <a href="{% url 'edit_quiz' quiz_id %}" type="button" class="btn btn-prim"><span
+                            class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
+                    <button type="submit" name="submit" class="btn btn-prim">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit
+                    </button>
+                </form>
+
+
+            </div><!--./col-md-12-->
+
+        </div> <!--/.row-->
+
+    </div> <!--/.container-->
+
+{% endblock %}

@@ -14,7 +14,7 @@
             <div class="col-md-3 col-sm-6 col-xs-12 module"><a class="no-underline" href="{% url 'module' mod.id %}">
               <div class="panel panel-module {% if prog == 0 %}new{% elif prog != 100 %}attempted{% endif %}">
                 <div class="panel-heading">{{ mod.title }}</div>
-                <div class="panel-body" {% if mod.background %}style="background-image: url(/{{ mod.background }})"{% endif %}> <!--Module background image should be placed here--->
+                 <div class="panel-body" style="background-image: {% if mod.background %}url(/static/img/{{ mod.background }}){% else %}url({% static 'img/example.png' %}){% endif %}">
                   {% if prog == 100 %}<i id="module-tick" class="fa fa-check fa-2x"></i>{% endif %}
                 </div><!--./panel-body-->
                 <div class="panel-footer">

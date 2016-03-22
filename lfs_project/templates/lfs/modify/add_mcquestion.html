@@ -1,0 +1,63 @@
+{% extends 'lfs/base.html' %}
+
+{% load staticfiles %}
+
+{% load bootstrap %}
+
+{% block title %}Add_MCQuestion{% endblock %}
+
+{% block body_block %}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <h2 class="page-heading">Add Question: Multi Choice</h2>
+                <hr>
+
+                <form id="mc_form" method="post" action="{% url 'add_mcquestion' quiz_id %}"
+                      enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ mc_form|bootstrap }}
+
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Answer text</td>
+                                <td>Is this correct?</td>
+                                <td></td>
+                                <td>Delete?</td>
+                                <td></td>
+                            </tr>
+                                {% for form in answer_form %}
+                                    <tr id="rows">
+                                        {% for field in form %}
+                                            <td>{{ field }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                    {{ answer_form.management_form }}
+
+                    <a href="{% url 'edit_quiz' quiz_id %}" type="button" class="btn btn-prim"><span
+                            class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
+                    <button type="submit" name="submit" class="btn btn-prim">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+      $(function() {
+        $('.form-container').formset({
+          prefix: '{{ answer_form.prefix }}'
+        });
+      })
+    </script>
+{% endblock %}

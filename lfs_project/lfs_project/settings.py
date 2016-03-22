@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'bootstrapform',
     'hitcount',
     'passwords',
-    'precise_bbcode',
     'pybb',
 ]
 

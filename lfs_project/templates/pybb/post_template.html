@@ -22,7 +22,7 @@
                 <a href="{{ post_user_profile.get_absolute_url }}">
                     <span class="post-username">{{ post_user_profile.get_display_name }}</span>
                 </a>
-            </div>
+            </div><!-- ./post-author -->
             {% if post_user_profile.rank %}
                 <div class='rank'>
                     {% trans "Rank" %}: {{ post_user_profile.rank }}
@@ -30,7 +30,7 @@
                         <a href='#' class='vote' rel='{{ post_user_profile.get_vote_up_url }}'>+</a>
                         <a href='#' class='vote' rel='{{ post_user_profile.get_vote_down_url }}'>-</a>
                     {% endif %}
-                </div>
+                </div><!-- ./rank -->
             {% endif %}
             {% if user.is_superuser %}
                 <div class="post-extra-info">{{ post.user_ip }}</div>
@@ -53,7 +53,7 @@
                     <a href="{% url 'admin:pybb_post_change' post.id %}">{% trans 'Admin' %}</a>
                 {% endif %}
 
-            </div>
+            </div><!-- ./post-controls -->
         </td>
         <td class="post-content" style="text-align: left;">
             {{ post.body_html|safe }}
@@ -62,7 +62,7 @@
                 {% if post_user_profile.signature %}
                     <div class="post-signature">
                         {{ post_user_profile.signature_html|safe }}
-                    </div>
+                    </div><!-- ./post-signature -->
                 {% endif %}
             {% endif %}
             {% if post.updated %}
@@ -86,8 +86,8 @@
                     {% for attachment in post.attachments.all %}
                         <a href="{{ attachment.file.url }}"><img src="{% static 'pybb/img/attachment.png' %}"> {{ attachment.size_display }}</a>
                     {% endfor %}
-                </div>
-            </div>
+                </div><!-- ./attachments -->
+            </div><!-- ./post-related -->
         </td>
     </tr>
     </tbody>

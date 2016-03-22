@@ -1,0 +1,38 @@
+{% extends 'lfs/base.html' %}
+
+{% load staticfiles %}
+
+{% load bootstrap %}
+
+{% block title %}Add_Quiz{% endblock %}
+
+{% block body_block %}
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <h2 class="page-heading">Add Quiz</h2>
+                <hr>
+                <!-- main body -->
+                <form id="quiz_form" method="post" action="{% url 'add_quiz' module_id %}" enctype="multipart/form-data">
+                    <p class="help-block">Fill in the relevant fields to create a quiz.</p>
+                    {% csrf_token %}
+                    {{ quiz_form|bootstrap }}
+                    <!-- Not yet linked with backend -->
+                    <a href="{% url 'edit_module' module_id %}" type="button" class="btn btn-prim"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
+                    <button href="{% url 'add_quiz' module_id %}" type="submit" name="submit" class="btn btn-prim">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit and Add Questions
+                    </button><!-- ./btn -->
+                </form><!-- ./module_form -->
+
+            </div><!--./col-md-12-->
+
+        </div> <!--/.row-->
+
+    </div> <!--/.container-->
+
+{% endblock %}

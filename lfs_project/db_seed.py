@@ -159,7 +159,7 @@ if __name__ == "__main__":
     # ------ Teachers -------
     for name in names:
         # all dummy passwords are 123
-        u = User.objects.create_user(name[0], 'smth@gmail.com', '123')
+        u = User.objects.create_user(name[0], 'smth@gmail.com', 'Abcde1234')
         
         u.first_name = name[1]
         u.last_name = name[2]

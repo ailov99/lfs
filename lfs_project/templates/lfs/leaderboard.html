@@ -26,7 +26,7 @@
           </div><!--./col-md-12-->
 
 
-          <div class="col-md-3 col-xs-4 sidebar" style="background-color: #f2f2f2;" align="center">
+          <div class="col-md-3 col-xs-4 sidebar sidebar-bkgr" align="center">
              <!-- sidebar -->
               </br>
               <h2>Progress</h2>
@@ -64,9 +64,13 @@
                 </div><!-- ./panel-body -->
               </div><!-- ./panel -->
 
-          </div>	<!-- ./sidebar -->
+        </div>	<!-- ./sidebar -->
 
         </div> <!--/.row-->
+
+
+  {% if user.teacher.leaderboard %}
+  <p>Note: You can opt out of the leaderboard in the <a href="{% url 'edit_profile' teacher.user.id %}">edit profile page</a><p>
   <table id="table_id" class="display mydisplay">
     <thead>
         <tr>
@@ -76,8 +80,8 @@
             <th>Age Range</th>
             <th>Category</th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       {% for key, value in all_users_overall_progress.items %}
       {% if key.teacher.leaderboard %}
       <tr>
@@ -114,42 +118,47 @@
       </tr>
       {% endif %}
       {% endfor %}
-        {% for category, usertuple in leaderboards.items %}
-        {% for takeruser, progress in usertuple %}
-        {% if takeruser.teacher.leaderboard %}
-        <tr>
-            {% if teacher.user == takeruser %}
-              <td id="currentuser">{{takeruser}}</td>
-              <td id="currentuser" >
-                <div class="progress" id="leaderboard-progress-bar">
-                    <div class="progress-bar progress-bar-success leaderboard-progress" role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%;">
-                             {{ progress }}
-                    </div><!--./progress-bar-->
-                </div><!--./progress-->
-              </td>
-              <td id="currentuser">{{takeruser.teacher.school}}</td>
-              <td id="currentuser">{{takeruser.teacher.get_age_range_display}}</td>
-              <td id="currentuser">{{category}}</td>
-            {% else %}
-              <td>{{takeruser}}</td>
-              <td>
-                <div class="progress" id="module-progress">
-                    <div class="progress-bar progress-bar-success leaderboard-progress"role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%;">
-                             {{ progress }}
-                    </div><!--./progress-bar-->
-                </div><!--./progress-->
-                </div><!--./progress-->
-              </td>
-              <td>{{takeruser.teacher.school}}</td>
-              <td>{{takeruser.teacher.get_age_range_display}}</td>
-              <td>{{category}}</td>
-            {% endif %}
-        </tr>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-        </tbody>
-        </table>
+
+      {% for category, usertuple in leaderboards.items %}
+      {% for takeruser, progress in usertuple %}
+      {% if takeruser.teacher.leaderboard %}
+      <tr>
+        {% if teacher.user == takeruser %}
+          <td id="currentuser"><a class="leaderboard-name" href="{% url 'profile' takeruser.id %}">{{takeruser}}</a></td>
+          <td id="currentuser" >
+            <div class="progress" id="leaderboard-progress-bar">
+                <div class="progress-bar progress-bar-success leaderboard-progress" role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%;">
+                         {{ progress }}
+                </div><!--./progress-bar-->
+            </div><!--./progress-->
+          </td>
+          <td id="currentuser">{{takeruser.teacher.school}}</td>
+          <td id="currentuser">{{takeruser.teacher.get_age_range_display}}</td>
+          <td id="currentuser">{{category}}</td>
+        {% else %}
+          <td><a class="leaderboard-name" href="{% url 'profile' takeruser.id %}">{{takeruser}}</a></td>
+          <td>
+            <div class="progress" id="module-progress">
+                <div class="progress-bar progress-bar-success leaderboard-progress"role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%;">
+                         {{ progress }}
+                </div><!--./progress-bar-->
+            </div><!--./progress-->
+            </div><!--./progress-->
+          </td>
+          <td>{{takeruser.teacher.school}}</td>
+          <td>{{takeruser.teacher.get_age_range_display}}</td>
+          <td>{{category}}</td>
+        {% endif %}
+      </tr>
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <h4>You must opt in to the leaderboards to view them.</h4>
+      <p>You can do this in <a href="{% url 'edit_profile' teacher.user.id %}">edit profile page</a></p>
+    {% endif %}
 
       </div><!-- ./col-md-9 -->
     </div><!-- ./row -->

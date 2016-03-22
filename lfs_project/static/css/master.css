@@ -6,8 +6,8 @@ Primary colour :hover       #4ab363
 Primary colour :active      #116024
 
 Secondary colour            #dd8908
-Secondary colour :hover     #f7ad3a 
-Secondary colour :active    #935b05 
+Secondary colour :hover     #f7ad3a
+Secondary colour :active    #935b05
 
 */
 
@@ -319,7 +319,7 @@ a .panel-module, a:hover .panel-module, a:active .panel-module {
   border-width: 1px;
   border-radius: 6px;
   border-color: rgba(0,0,0,0.6);
-  
+
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   transition: all 0.2s;
@@ -447,14 +447,66 @@ form a {
   margin-left: 15px;
 }
 
+.ml2 {
+  margin-left: 2px;
+}
+
+.ml3 {
+  margin-left: 3px;
+}
+
+.mb100 {
+  margin-top: 100px;
+}
+
+.mb2 {
+  margin-top: 2%;
+}
+
+.mt2 {
+  margin-bottom: 2%;
+}
+
+.mb5 {
+  margin-bottom: 5%;
+}
+
+.mt5 {
+  margin-top: 5%;
+}
+
 .no-mt {
   margin-top: 0px;
+}
+
+.fullwidth {
+  width:100%;
+}
+
+.Loginimg {
+  width:200px;
+  height:200px;
+}
+
+.Logoimg {
+  width: 50px;
+  height: 50px;
+}
+
+.guLogo {
+  width: 30px;
+  height: 43px;
 }
 
 .admin-guide-img {
   margin-bottom: 10px;
   border: 0.5px solid grey;
   box-shadow: 2px 2px 10px 2px #888888;
+  margin-bottom: 2%;
+}
+
+.gray {
+  color: grey;
 }
 
 hr {
@@ -497,6 +549,15 @@ hr {
   background-image: linear-gradient(#009933, #99CC33);
   color: white;
   border-color: #009933;
+}
+
+.sidebar-bkgr {
+  background-color: #f2f2f2;
+}
+
+.teacher-pic {
+  width:200px;
+  height:200px;
 }
 
 .centre {

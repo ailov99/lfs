@@ -84,7 +84,7 @@
              sector to incorporate Learning for Sustainability within the curriculum, and to allow practitioners to
              become leaders in implementing sustainable development within their institutions.
            </p>
-               <h4>Crichton Carbon Centre <img src="{% static 'img/CCCLogo.png' %}" style="width: 50px; height: 50px;"/></h4>
+               <h4>Crichton Carbon Centre <img src="{% static 'img/CCCLogo.png' %}" class="Logoimg"/></h4>
            <p>
                 The Crichton Carbon Centre has been contributing to reducing carbon emissions in Dumfries and Galloway and
                 across Scotland since 2007. Over the past eight years, the Crichton Carbon Centre has delivered a programme
@@ -101,7 +101,7 @@
            </p>
            <strong>Contact CCC</strong><br>
            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <a href="mailto:info@carboncentre.org">info@carboncentre.org</a>
-           <h4>Development <img src="{% static 'img/Glasgow_logo.png' %}" style="width: 30px; height: 43px;"/></h4>
+           <h4>Development <img src="{% static 'img/Glasgow_logo.png' %}" class="guLogo"/></h4>
            <p>Developed by a Software Engineering team from Glasgow University. </br>
              Aurimas Saulys,Greg Thomson, Duncan Milne, Reni Mihaylova, Aleksandar Ilov, Remigijus Bartasius
            </p>
@@ -117,7 +117,7 @@
 
   {% block body_block %}
     {% block sidebar %}
-      <div class="col-md-3 col-xs-4 sidebar" style="background-color: #f2f2f2;" align="center">
+      <div class="col-md-3 col-xs-4 sidebar sidebar-bkgr" align="center">
          <!-- sidebar -->
           </br>
           <h2>Progress</h2>
@@ -146,7 +146,6 @@
                   <h5>Total modules: {{ modules_total }} </h5>
                   <h5>Total taken: {{ modules_progress|length }} </h5>
                   <h5>Completed modules: {{ modules_completed|length }} </h5>
-                  <h5>Mistakes made: ? </h5>
               </div><!-- ./panel-body -->
           </div><!-- ./panel -->
 

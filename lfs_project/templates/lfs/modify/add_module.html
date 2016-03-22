@@ -9,29 +9,32 @@
 {% block body_block %}
 
 
-<div class="container">
+    <div class="container">
 
-   <div class="row">
+        <div class="row">
 
-     <div class="col-md-12">
+            <div class="col-md-12">
 
-       <h2 class="page-heading">Add Module</h2>
-       <hr>
-       <!-- main body -->
-       <form id="module_form" method="post" action="{% url 'add_module' %}" enctype="multipart/form-data">
-          <p class="help-block">Please name your module and add a background image which will be displayed on the dashboard.</p>
-          				{% csrf_token %}
-					{{ module_form|bootstrap }}
-          <!-- Not yet linked with backend -->
-          <button href="{% url 'admin' %}" type="submit" name="submit" class="btn btn-prim">
-             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit and Add Pages
-          </button><!-- ./btn -->
-      </form><!-- ./module_form -->
+                <h2 class="page-heading">Add Module</h2>
+                <hr>
+                <!-- main body -->
+                <form id="module_form" method="post" action="{% url 'add_module' %}" enctype="multipart/form-data">
+                    <p class="help-block">Please name your module and add a background image which will be displayed on
+                        the dashboard.</p>
+                    {% csrf_token %}
+                    {{ module_form|bootstrap }}
+                    <!-- Not yet linked with backend -->
+                    <a href="{% url 'admin' %}" type="button" class="btn btn-prim"><span
+                            class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
+                    <button href="{% url 'admin' %}" type="submit" name="submit" class="btn btn-prim">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit and Add Pages
+                    </button><!-- ./btn -->
+                </form><!-- ./module_form -->
 
-    </div><!--./col-md-12-->
+            </div><!--./col-md-12-->
 
-   </div> <!--/.row-->
+        </div> <!--/.row-->
 
- </div> <!--/.container-->
+    </div> <!--/.container-->
 
 {% endblock %}

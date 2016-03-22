@@ -108,7 +108,12 @@ function gen_regs_linechart(regs_data) {
     x.domain(d3.extent(regs_data, function(d) { return formatDate.parse(d.date); }));
     //y.domain(d3.extent(regs_data, function(d) { return d.reg_count; }));
     // hard-coded y domain range
-    y.domain([0, 20]);
+    var max_hit = 0
+    for (var i = 0; i < 7; i++) {
+    	if (regs_data[i].reg_count > max_hit)
+    		max_hit = regs_data[i].reg_count
+    }
+    y.domain([0, max_hit + 10]);
 
     svg.append("g")
 	.attr("class", "x axis")
@@ -179,7 +184,13 @@ function gen_anon_hits_linechart(anon_hits_data) {
     x.domain(d3.extent(anon_hits_data, function(d) { return formatDate.parse(d.date); }));
 
     // hard-coded y domain range
-    y.domain([0, 20]);
+	var max_hit = 0
+    for (var i = 0; i < 7; i++) {
+    	if (anon_hits_data[i].anon_hits_count > max_hit)
+    		max_hit = anon_hits_data[i].anon_hits_count
+    }
+    
+    y.domain([0, max_hit + 10]);
 
     svg.append("g")
 	.attr("class", "x axis")

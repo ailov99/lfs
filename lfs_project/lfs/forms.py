@@ -6,8 +6,8 @@ from passwords.fields import PasswordField
 class UserForm(forms.ModelForm):
 	password = PasswordField(label="Password", widget=forms.PasswordInput())
 	terms = forms.BooleanField(required=True, error_messages={'required': 'You must accept the terms and conditions'}, label="I have read and agree to the terms and conditions")
-	opt_in = forms.BooleanField(required=False, label="I allow my information (name, age-range, location, progress) to be shown in the leaderboard")
-    
+	
+
 	class Meta:
 		model = User
 		fields = ('username', 'first_name', 'last_name', 'email', 'password')
@@ -28,8 +28,8 @@ class TeacherForm(forms.ModelForm):
 	age_range = forms.ChoiceField(choices = AGE_RANGE_CHOICES)
 	location = forms.CharField(max_length=200, initial='', required = False)
 	picture = forms.ImageField(required = False)
-	leaderboard = forms.BooleanField(label="Tick to particpate in Leaderboard", initial=True, required = False)
-
+	leaderboard = forms.BooleanField(required=False, label="I allow my information (name, age-range, location, progress) to be shown in the leaderboard")
+    
 	class Meta:
 		model = Teacher
 		exclude = ('user',)
@@ -37,7 +37,7 @@ class TeacherForm(forms.ModelForm):
 class ModuleForm(forms.ModelForm):
     title = forms.CharField(max_length=200)
     background = forms.ImageField(required = False)
-    
+
     class Meta:
     	model = Module
     	exclude = ('taker',)

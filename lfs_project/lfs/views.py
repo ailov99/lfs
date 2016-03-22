@@ -41,6 +41,7 @@ def user_register(request):
     context_dict['teacher_form'] = TeacherForm()
     context_dict['is_admin'] = False
 
+    # check if user is admin
     if request.user.is_authenticated():
         if Administrator.objects.filter(user = request.user).exists():
             context_dict['is_admin'] = True
@@ -62,7 +63,8 @@ def user_register(request):
                 return render(request, 'lfs/login/register.html', {})
 
             # Use default (empty values) for all other Teacher fields
-            Teacher.objects.create(user=user, leaderboard=form.cleaned_data['opt_in'])
+            Teacher.objects.create(user=user)
+
 
             for module in Module.objects.filter(compulsory=True):
                 Takers.objects.create(user=user, module=module)
@@ -73,6 +75,7 @@ def user_register(request):
             return HttpResponseRedirect('/lfs/login/')
         else:
             context_dict['errors'] = form.errors
+            print form.errors
 
     return render(request, 'lfs/login/register.html', context_dict)
 
@@ -154,6 +157,8 @@ def user_dashboard(request):
     context_dict['modules_progress'] = {i.module : i.progress for i in takers_record if i.user==user}
     if context_dict['is_admin']:
         context_dict['modules_progress'] = {i : 0 for i in Module.objects.all()}
+        for i in Module.objects.all():
+            Takers.objects.get_or_create(user=user, module=i)
         context_dict['overall_progress'] = 0
 
     # also pass total number of modules available throughout the platform
@@ -186,8 +191,7 @@ def leaderboard(request):
     user = request.user
     if not user.is_staff:
         teacher = Teacher.objects.filter(user=user)[0]
-        if teacher.leaderboard:
-            context_dict['teacher'] = teacher
+        context_dict['teacher'] = teacher
     all_users = User.objects.all()
 
     takers_record = Takers.objects.all()
@@ -263,7 +267,6 @@ def profile(request, userid):
 @login_required
 def edit_profile(request, userid):
     """ Editing user profile """
-    # can be extended to ask the user to input correct password to save
     context_dict = {}
 
     # pass which navbar tab is active
@@ -291,6 +294,7 @@ def edit_profile(request, userid):
         # Attempt to grab information from the raw form information.
         user_form = UserForm(request.POST, request.FILES, instance= user)
         teacher_form = TeacherForm(request.POST, request.FILES, instance= teacher)
+        # check if password is correct
         if user.check_password(user_form.data['password']):
             if  user_form.is_valid():
                 if teacher_form.is_valid():
@@ -312,10 +316,8 @@ def edit_profile(request, userid):
                     context_dict['teacher_form'] = TeacherForm(instance = teacher)
                     changed = True
                 else:
-                    print teacher_form.errors
                     context_dict['message'] = teacher_form.errors
             else:
-                print user_form.errors
                 context_dict['message'] = user_form.errors
         else:
             # used to inform the user to input the password
@@ -329,7 +331,6 @@ def edit_profile(request, userid):
 
 def change_password(request):
     """ Change Password """
-
 
     context_dict = {}
     user = request.user
@@ -424,7 +425,7 @@ def user_subscription(request, userid):
 
 @login_required
 def pick_module(request, moduleid):
-    """ Allows user to modify their module choices """
+    """ Allows user to modify their module choices by enrolling in a module """
     user = request.user
     module = Module.objects.get(id = moduleid)
 
@@ -435,7 +436,7 @@ def pick_module(request, moduleid):
 
 @login_required
 def drop_module(request, moduleid):
-    """ Allows user to modify their module choices """
+    """ Allows user to modify their module choices by unenrolling from a module"""
     user = request.user
     module = Module.objects.get(id = moduleid)
 
@@ -462,7 +463,7 @@ def modules(request):
             for m in modules:
                 context_dict['modules'].append(m)
 
-        # if user is a teacher find modules taken to display them first
+        # if user is a teacher split modules into taken and not taken for display order
         elif Teacher.objects.filter(user = user).exists():
             teacher = Teacher.objects.get(user = user)
             for m in modules:
@@ -531,17 +532,31 @@ def module(request, moduleid):
 
 
 def update_progress(request, moduleid, pagenum):
+    """ Updates the progress of a user while reading module content """
+    #get user and module relation
     user = request.user
     module = Module.objects.get(id = moduleid)
+    # if user has not finished all the pages
+    response = render(request, 'lfs/content.html', {'module_id': moduleid})
+    # get total number of pages
     pages_count = float(module.page_set.count());
-    # ADD IF there is quiz pages count +1
-    progress = 1.0
-    taker = Takers.objects.get(user=user, module=module)
-    progress = float(pagenum)/pages_count
-    taker.progress = 100*progress
-    taker.save()
+    if user.is_authenticated():
+        taker = Takers.objects.get(user=user, module=module)
+        if taker.progress < 50:
+            progress = 1.0
+            # get current page/ all pages ratio
+            progress = (float(pagenum) + 1.0)/pages_count
+            taker.progress = 50*progress
+            taker.save()
+    else:
+        title = str(module.title).replace(' ', '_')
+        current_progress = int(request.COOKIES.get(title, '0'))
+        if current_progress < 50:
+            progress = (float(pagenum) + 1.0)/pages_count * 50
+            if current_progress < progress:
+                response.set_cookie(title, int(progress))
 
-    return render(request, 'lfs/content.html', {'module_id': moduleid})
+    return response
 
 
 # ----------------------- Messaging Functionality ---------------------
@@ -566,7 +581,7 @@ def message(request, messageid):
 
 @login_required
 def admin_guide(request):
-
+    """ A guide to administering the website """
 
     context_dict = {}
 
@@ -595,7 +610,7 @@ def trial_dashboard(request):
     modules_count = Module.objects.filter(trial=True).count()
 
     # pass all trial modules a dict(module_name : progress)
-    context_dict['modules_progress'] = {i : int(request.COOKIES.get(str(i), '0')) for i in modules}
+    context_dict['modules_progress'] = {i : int(request.COOKIES.get(str(i).replace(' ', '_'), '0')) for i in modules}
     if modules_count != 0:
         context_dict['overall_progress'] = reduce(lambda x,y: x+y, [value for key, value in context_dict['modules_progress'].iteritems()], 0) / modules_count
     else:
@@ -610,7 +625,8 @@ def trial_dashboard(request):
     response = render_to_response('lfs/trial/index.html', context_dict, context)
 
     for key, value in context_dict['modules_progress'].iteritems():
-        response.set_cookie(str(key), value, max_age=cookie_lifetime)
+        title = str(key).replace(' ', '_')
+        response.set_cookie(title, value, max_age=cookie_lifetime)
 
     return response
 
@@ -632,7 +648,9 @@ def trial_module(request, moduleid):
 
     # Pages query returns ordered tuple (no need to label each page)
     context_dict['module_pages'] = tuple(i for i in Page.objects.filter(module=module))
-    context_dict['user_progress_on_module'] = int(request.COOKIES.get(str(module.title), '0'))
+    title = str(module.title).replace(' ', '_')
+    context_dict['user_progress_on_module'] = int(request.COOKIES.get(title, '0'))
+    print context_dict['user_progress_on_module'], int(request.COOKIES.get(title, '0'))
     context_dict['user_modules'] = Module.objects.filter(trial=True)
 
     context_dict['module_downloadable'] = tuple(i for i in ContentFile.objects.filter(module=module))
@@ -641,6 +659,6 @@ def trial_module(request, moduleid):
     cookie_lifetime = 60 * 60 # all cookies should last for an hour
 
     response = render_to_response('lfs/trial/content.html', context_dict, context)
-    response.set_cookie(str(module.title), context_dict['user_progress_on_module'], max_age=cookie_lifetime)
+    response.set_cookie(title, context_dict['user_progress_on_module'], max_age=cookie_lifetime)
 
     return response

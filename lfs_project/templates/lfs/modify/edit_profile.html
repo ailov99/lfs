@@ -16,16 +16,17 @@
 			<div id="edit-profile">
 				<form id="user_form" method="post" action="{% url 'edit_profile' user.id %}"
 					enctype="multipart/form-data">
-					{% csrf_token %}
-					{{ user_form|bootstrap }}
-					{% if message %}
-						<div class="error-messages">
-							{{message}}
-						</div>
-					{% else %}
-						<li>Required</li>
-					{% endif %}
-					</br></br>
+					<div class="mt2">
+						{% csrf_token %}
+						{{ user_form|bootstrap }}
+						{% if message %}
+							<div class="error-messages">
+								{{message}}
+							</div>
+						{% else %}
+							<li>You must agree to the terms and conditions to proceed</li>
+						{% endif %}
+					</div>
 					{{teacher_form|bootstrap}}
 					<button id="login-button" class="edit-profile-submit" type="submit" name="submit"> Submit Changes </button>
 				</form>

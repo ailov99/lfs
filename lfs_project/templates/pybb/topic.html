@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="topic" style="margin-left: 20px; margin-right: 20px; width: 60%;">
+    <div class="topic col-md-12">
         <h2>{{ topic.name }}</h2>
         {% with _('Posts') as label %}
             {% include "pybb/pagination.html" %}
@@ -41,7 +41,7 @@
                 {% cycle 'odd' 'even' as rowcolors silent %}
                 {% include "pybb/post_template.html" %}
             {% endfor %}
-        </div>
+        </div><!-- ./posts -->
         <div>&nbsp;</div>
         {% with _('Posts') as label %}
             {% include "pybb/pagination.html" %}
@@ -74,7 +74,7 @@
                     {% elif user|pybb_may_subscribe_topic:topic %}
                         <a href="{% url 'pybb:add_subscription' topic.id %}">{% trans "Subscribe" %}</a>
                     {% endif %}
-                </div>
+                </div><!-- ./controls -->
             {% endif %}
         {% endif %}
 
@@ -96,7 +96,7 @@
                     </a>
                     {% if forloop.last %}{{ forloop.counter }}{% endif %}
                 {% endfor %}
-            </div>
+            </div><!-- ./subscriber-list -->
         {% endif %}
-    </div>
+    </div><!-- ./topic -->
 {% endblock %}

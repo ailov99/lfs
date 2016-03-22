@@ -399,3 +399,6 @@ WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packag
 WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
   compiled_result = compile_func(self, token)
 
+WARNING:py.warnings:/home/ailov/.virtualenvs/old/local/lib/python2.7/site-packages/django/template/base.py:290: RemovedInDjango18Warning: 'The `cycle` template tag is changing to escape its arguments; the non-autoescaping version is deprecated. Load it from the `future` tag library to start using the new behavior.
+  compiled_result = compile_func(self, token)
+

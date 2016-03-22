@@ -20,13 +20,12 @@
       <hr>
 
       <p class="help-block">Input link to image below and it will generate a tag to copy into the content of the page.</p>
-      <div class="input-group">
+      <div class="input-group mt2">
         <span class="input-group-btn">
           <button id="imageCreate" class="btn btn-prim" type="button">Create an image!</button>
         </span>
         <input id="imageLink" type="text" class="form-control" placeholder="e.g 'http://www.google.com/image.png'">
       </div><!-- /input-group -->
-      <br>
 
       <form id="module_form" method="post" action="{% url 'edit_page' page_id %}" enctype="multipart/form-data">
       {% csrf_token %}

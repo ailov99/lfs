@@ -11,12 +11,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="forum" style="margin-left: 20px; margin-right: 20px; width: 60%;">
+    <div class="forum col-md-12">
         <h1>{% trans "Last updates in topics" %}</h1>
         {% if forum.headline %}
             <div class="forum-headline alert alert-block">
                 {{ forum.headline|safe }}
-            </div>
+            </div><!-- ./forum-headline -->
         {% endif %}
 
         {% include "pybb/pagination.html" %}
@@ -27,10 +27,10 @@
 
         {% if user.is_authenticated %}
             <div id='mark-all-as-read'>
-                <a href='{% url 'pybb:mark_all_as_read' %}'>
+                <a class="btn" href='{% url 'pybb:mark_all_as_read' %}'>
                     {% trans "Mark all topics as read" %}
                 </a>
-            </div>
+            </div><!-- ./mark-all-as-read -->
         {% endif %}
     </div>
 {% endblock content %}

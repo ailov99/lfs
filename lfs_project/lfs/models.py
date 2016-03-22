@@ -4,7 +4,6 @@ import os
 from django.db import models
 from django.contrib.auth.models import User
 from hitcount.models import HitCountMixin
-from precise_bbcode.fields import BBCodeTextField
 
 
 class Teacher(models.Model):
@@ -24,12 +23,12 @@ class Teacher(models.Model):
         ('6', '56 or older'),
     )
     age_range = models.CharField(max_length=2,
-                                      choices=AGE_RANGE_CHOICES,
-                                      default='0')
+                                 choices=AGE_RANGE_CHOICES,
+                                 default='0')
     location = models.CharField(max_length=200, default='')
     picture = models.ImageField(upload_to='static/Pictures/', blank=True)
-    #opt in to leaderboard
-    leaderboard = models.BooleanField(default=False)
+    # opt in to leaderboard
+    leaderboard = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.user.username
@@ -43,13 +42,14 @@ class Module(models.Model, HitCountMixin):
 
     title = models.CharField(max_length=200)
     background = models.ImageField(upload_to='static/Pictures/', blank=True)
-    #downloadable = models.FileField(upload_to='Content/', blank=True)
+    # downloadable = models.FileField(upload_to='Content/', blank=True)
 
     trial = models.BooleanField(default=False)
     compulsory = models.BooleanField(default=False)
-    
+
     def __unicode__(self):
         return self.title
+
 
 class ContentFile(models.Model):
     """ Represents a downloadable file """
@@ -59,6 +59,7 @@ class ContentFile(models.Model):
 
     def filename(self):
         return os.path.basename(self.file.name)
+
 
 class Takers(models.Model):
     """ Many to many representation between Modules and Teachers. """
@@ -76,10 +77,10 @@ class Page(models.Model):
 
     position = models.IntegerField(default=0) #order of page
     section = models.CharField(max_length=200) # title of section
-    content = BBCodeTextField()
+    content = models.TextField()
 
     # Maintain table order by insertion time
-    time = models.DateTimeField(auto_now_add = True, null=True)
+    time = models.DateTimeField(auto_now_add=True, null=True)
 
     class Meta:
         ordering = ['time']

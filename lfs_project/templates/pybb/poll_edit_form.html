@@ -1,22 +1,22 @@
 {% load i18n %}
-<div id="poll-type" style="margin-left: 20px; margin-right: 20px; width: 60%;">
+<div class="col-md-12" id="poll-type">
 {% include "pybb/form_field.html" with field=form.poll_type %}
-</div>
-<div id="poll-question" style="margin-left: 20px; margin-right: 20px; width: 60%;">
+</div><!-- ./poll-type -->
+<div class="col-md-12" id="poll-question">
   {% include "pybb/form_field.html" with field=form.poll_question %}
-</div>
-<div id="poll-answers-formset">
-<div style="margin-left: 20px; margin-right: 20px; width: 60%;">
-  <br>{% trans 'Poll answers' %}
-    {% include "pybb/form_errors.html" with form=pollformset %}
-    {% for form_answer in pollformset %}
-        <div class="poll-answer-form">
-            {% include "pybb/form.html" with form=form_answer hide_labels=1 %}
-        </div>
-    {% endfor %}
-  {{ pollformset.management_form }}
-</div>
-</div>
+</div><!-- ./poll-type -->
+<div class="col-md-12" id="poll-answers-formset">
+  <div>
+    <br>{% trans 'Poll answers' %}
+      {% include "pybb/form_errors.html" with form=pollformset %}
+      {% for form_answer in pollformset %}
+          <div class="poll-answer-form">
+              {% include "pybb/form.html" with form=form_answer hide_labels=1 %}
+          </div>
+      {% endfor %}
+    {{ pollformset.management_form }}
+  </div><!-- ./col-md-12 -->
+</div><!-- ./poll-answers-formset -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.formset/1.2.2/jquery.formset.js"></script>
 <script type="text/javascript">

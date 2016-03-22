@@ -9,9 +9,9 @@
 
 {% block content %}
     {% pybb_get_profile target_user as target_profile %}
-    <div style="margin-left: 20px; margin-right: 20px; width: 60%;">
+  <div class="col-md-12">
     <h2>{{ target_profile.get_display_name }}</h2>
-    
+
     <div class="userinfo">
         {% include 'pybb/avatar.html' with user=target_user %}
         <div class="info">
@@ -29,9 +29,9 @@
                 </a>
             </div>
             <div>{% trans "Date of registration" %}: {% pybb_time target_user.date_joined %}</div>
-        </div>
+        </div><!-- ./info -->
         <div class="clear"></div>
-    </div>
+    </div><!-- ./userinfo -->
     <div class='controls'>
         {% if perms.pybb.block_users %}
             {% if target_user.is_active %}
@@ -48,6 +48,6 @@
         {% if target_user.id == user.id %}
             <a href="{% url 'pybb:edit_profile' %}">{% trans 'Edit' %}</a>
         {% endif %}
-    </div>
-</div>
+    </div><!-- ./controls -->
+ </div><!-- ./col-md-12 -->
 {% endblock %}

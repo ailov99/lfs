@@ -1,0 +1,62 @@
+{% extends 'lfs/base.html' %}
+
+{% load staticfiles %}
+
+{% load bootstrap %}
+
+{% block title %}Edit_MCQuestion{% endblock %}
+
+{% block body_block %}
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <h2 class="page-heading">Edit Question: Multi Choice</h2>
+                <hr>
+                <!-- main body -->
+                <a href="{% url 'delete_mcquestion'  mc_id %}" type="button" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete Question
+                </a>
+                <form id="mc_form" method="post" action="{% url 'edit_mcquestion' mc_id quiz_id %}"
+                      enctype="multipart/form-data">
+                    <p class="help-block">Please make your changes below.</p>
+                    {% csrf_token %}
+
+                    {{ mc_form|bootstrap }}
+
+                    <table class="table">
+                        <tr>
+                            <td>Answer text</td>
+                            <td>Is this correct?</td>
+                            <td></td>
+                            <td>Delete?</td>
+                            <td></td>
+                        </tr>
+                        {{ answer_form.management_form }}
+                        {% for form in answer_form %}
+                            <tr>
+                                {% for field in form %}
+                                    <td>{{ field }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                    <a href="{% url 'edit_quiz' quiz_id %}" type="button" class="btn btn-prim"><span
+                            class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
+                    <button type="submit" name="submit" class="btn btn-prim">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit
+                    </button>
+                </form>
+
+
+            </div><!--./col-md-12-->
+
+        </div> <!--/.row-->
+
+    </div> <!--/.container-->
+
+{% endblock %}

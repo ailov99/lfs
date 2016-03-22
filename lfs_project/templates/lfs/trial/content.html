@@ -10,25 +10,24 @@
       <div class="col-md-9 col-xs-8 border content-box">
           <!-- main body -->
           <h1>{{ module_title }}</h1>
-          {% for p in pages %}
-          <div hidden id="moduleid" value="{{module_id}}"></div>
-          <div class="module-page" id="page{{p.position}}" >
-            <h2>{{ p }}</h2>
-            <hr>
-            {% load bbcode_tags %}
-            {% bbcode entry.bbcode_content %}
+            {% for p in pages %}
+            <div hidden id="moduleid" value="{{module_id}}"></div>
+            <div class="module-page" id="page{{p.position}}" >
+              <h2>{{ p }}</h2>
+              <hr>
 
-            <p> {{ p.content.rendered }} </p>
-          </div>
-          {% endfor %}
-          <br>
+              <div class="mt5">
+                <p> {{ p.content | safe }} </p>
+              </div>
+            </div>
+            {% endfor %}
           <ul>
             {% for dw_item in module_downloadable %}
               <li><a class="downloadables"  href="{% url 'download_content' dw_item.id %}">{{ dw_item.filename }}</a>
               </li>
             {% endfor %}
                   </ul>
-	           <div class="row">
+	           <div class="row mt5">
                 <div class="col-md-9 col-xs-9">
                   <a id="back-btn" href="{% url 'index' %}" type="button" class="btn btn-prim"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
                   <a id="prev-page" type="button" class="btn btn-prim"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
@@ -39,16 +38,14 @@
                   <a id="next-page" type="button" class="btn btn-prim">Next <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
                 </div><!-- ./col-md-2-->
             </div><!-- ./row -->
-            <br>
-            <br>
 
       </div><!-- ./content-box-->
 
 {% block sidebar %}
 
-      <div class="col-md-3 col-xs-4 sidebar" style="background-color: #f2f2f2;" align="center">
+      <div class="col-md-3 col-xs-4 sidebar sidebar-bkgr" align="center">
         <!-- sidebar -->
-        </br>
+        <br>
         <h2>Progress of Module</h2>
         <div class="circle" id="sidebar_circle">
           <strong>{{ user_progress_on_module }}%</strong>

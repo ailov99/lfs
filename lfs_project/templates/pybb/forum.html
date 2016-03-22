@@ -10,12 +10,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="forum" style="margin-left: 20px; margin-rght: 20px; width: 60%;">
+    <div class="forum col-md-12">
         <h2>{{ forum.name }}</h2>
         {% if forum.headline %}
             <div class="forum-headline alert alert-block">
                 {{ forum.headline|safe }}
-            </div>
+            </div><!-- ./forum-headline -->
         {% endif %}
 
         {% include "pybb/pagination.html" %}
@@ -29,7 +29,7 @@
         {% if user|pybb_may_create_topic:forum %}
             <div class="controls">
                 {% include "pybb/_button_new_topic.html" %}
-            </div>
+            </div><!-- ./controls -->
         {% endif %}
-    </div>
+    </div><!-- ./forum -->
 {% endblock content %}

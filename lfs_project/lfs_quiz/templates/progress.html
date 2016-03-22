@@ -9,46 +9,46 @@
 {% block body_block %}
 
     <div class="container">
-    </br>
+        </br>
 
-      {% if exams %}
+        {% if exams %}
 
-      <hr>
+            <hr>
 
-      <h1>Previously Attempted Quizzes </h1>
-      <p class="lead">
-        Below are the results of the quizzes that you have already taken.
-      </p>
+            <h1>Previously Attempted Quizzes </h1>
+            <p class="lead">
+                Below are the results of the quizzes that you have already taken.
+            </p>
 
-      <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped">
 
-        <thead>
-          <tr>
-            <th>Quiz Title</th>
-            <th>Score</th>
-            <th>Possible Score</th>
-            <th>%</th>
-          </tr>
-        </thead>
+                <thead>
+                <tr>
+                    <th>Quiz Title</th>
+                    <th>Score</th>
+                    <th>Possible Score</th>
+                    <th>%</th>
+                </tr>
+                </thead>
 
-        <tbody>
+                <tbody>
 
-          {% for exam in exams %}
+                {% for exam in exams %}
 
-          <tr>
-            <td>{{ exam.quiz.title }}</td>
-            <td>{{ exam.current_score }}</td>
-            <td>{{ exam.get_max_score }}</td>
-            <td>{{ exam.get_percent_correct }}</td>
-          </tr>
+                    <tr>
+                        <td>{{ exam.quiz.title }}</td>
+                        <td>{{ exam.current_score }}</td>
+                        <td>{{ exam.get_max_score }}</td>
+                        <td>{{ exam.get_percent_correct }}</td>
+                    </tr>
 
-          {% endfor %}
+                {% endfor %}
 
-        </tbody>
+                </tbody>
 
-      </table>
+            </table>
 
-      {% endif %}
+        {% endif %}
 
     </div>
 
