@@ -1,28 +1,5 @@
-## General Information
-Release version: 1.1
-
-Working features:
-1. User Side
-- Module trials
-- Module picking
-- Module progress tracking
-- Module quizzes
-- User profiles
-- User Leaderboard
-- Discussion Forum
-
-2. Admin side
-- Admin promotions
-- Module add/edit
-- Quizz add/edit
-- Site statistics
-- Moderating Discussion Forum
-
-Known bugs:
-- Forum smileys cannot be clicked
-- Forum incompatible with Bootstrap 3. Currently is manually configured.
-- Forum avatars are not synced with user avatars
-
+Release version: 1.2
+Hosted on: https://lfs.pythonanywhere.com/lfs
 
 ## Synopsis
 
@@ -66,6 +43,13 @@ django-model-utils==2.4
 django-bootstrap-form==3.2
 django-hitcount==1.2.1
 django-passwords==0.3.7
+django-annoying==0.9.0
+django-form-utils==1.0.3
+django-formset-js==0.5.0
+django-jquery-js==2.1.4
+pytz==2016.1
+pybbm==0.17.3
+Unidecode==0.4.19
 bbcode==1.0.22
 coverage==4.0.3
 pbr==1.8.1
