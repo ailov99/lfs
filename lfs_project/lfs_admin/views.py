@@ -6,7 +6,6 @@ from lfs_admin.models import Administrator
 from lfs_admin.models import UserRegistrations, AnonHits
 from datetime import date, timedelta
 import json
-from django.contrib.auth.models import User
 from lfs.forms import *
 from lfs_quiz.forms import *
 
@@ -220,10 +219,11 @@ def delete_module(request, moduleid):
 
 
 def add_quiz(request, moduleid):
-    """ Admin can edit/add/remove modules """
-    context_dict = {}
-    context_dict['quiz_form'] = QuizForm()
-    context_dict['module_id'] = moduleid
+    """
+    Adding the quiz.
+    :param moduleid: id to connect the quiz to the module
+    """
+    context_dict = {'quiz_form': QuizForm(), 'module_id': moduleid}
 
     module = Module.objects.filter(id=moduleid)[0]
 
@@ -234,7 +234,8 @@ def add_quiz(request, moduleid):
             quiz.module = module
             quiz.save()
 
-            return HttpResponseRedirect('/lfs_admin/edit_quiz/' + str(quiz.id) + '/')
+            return HttpResponseRedirect('/lfs_admin/edit_quiz/' +
+                                        str(quiz.id) + '/')
 
         else:
             print quiz_form.errors
@@ -243,9 +244,11 @@ def add_quiz(request, moduleid):
 
 
 def edit_quiz(request, quizid):
-    """ Admin can edit/add/remove quizzes """
-    context_dict = {}
-    context_dict['quiz_id'] = quizid
+    """
+    Edit the specified quiz.
+    :param quizid: id of the quiz that will be edited
+    """
+    context_dict = {'quiz_id': quizid}
     quiz = Quiz.objects.get(id=quizid)
     moduleid = quiz.module.id
     context_dict['module_id'] = moduleid
@@ -260,7 +263,8 @@ def edit_quiz(request, quizid):
             quiz = quiz_form
             quiz.save()
 
-            return HttpResponseRedirect('/lfs_admin/edit_module/' + str(moduleid) + '/')
+            return HttpResponseRedirect('/lfs_admin/edit_module/' +
+                                        str(moduleid) + '/')
 
         else:
             print "Error on editing page: " + str(quiz_form.errors)
@@ -268,28 +272,32 @@ def edit_quiz(request, quizid):
     return render(request, 'lfs/modify/edit_quiz.html', context_dict)
 
 
-def delete_quiz(request, quizid):
+def delete_quiz(request, quizid, moduleid):
     quiz = Quiz.objects.get(id=quizid)
     quiz.delete()
-    return HttpResponse('Quiz deleted')
+    return HttpResponseRedirect('/lfs_admin/edit_module/' + str(moduleid) + '/')
 
 
 def add_tfquestion(request, quizid):
-    """ Admin can edit/add/remove modules """
-    context_dict = {}
-    context_dict['tf_form'] = TFQuestionForm()
-    context_dict['quiz_id'] = quizid
+    """
+    Add True-False question and associate it with the quiz.
+    :param quizid: quiz that the question belongs to
+    """
+    context_dict = {'tf_form': TFQuestionForm(), 'quiz_id': quizid}
 
     quiz = Quiz.objects.filter(id=quizid)[0]
 
     if request.method == 'POST':
-        tf_form = TFQuestionForm(request.POST)
+        tf_form = TFQuestionForm(request.POST, request.FILES)
         if tf_form.is_valid():
             tf = tf_form.save(commit=False)
+            if 'figure' in request.FILES:
+                tf.figure = request.FILES['figure']
             tf.save()
             tf.quiz.add(quiz)
 
-            return HttpResponseRedirect('/lfs_admin/edit_quiz/' + str(quizid) + '/')
+            return HttpResponseRedirect('/lfs_admin/edit_quiz/' +
+                                        str(quizid) + '/')
 
         else:
             print tf_form.errors
@@ -298,21 +306,26 @@ def add_tfquestion(request, quizid):
 
 
 def edit_tfquestion(request, tfid, quizid):
-    """ Admin can edit/add/remove modules """
-    context_dict = {}
-    context_dict['tf_id'] = tfid
-    context_dict['quiz_id'] = quizid
+    """
+    Editing the True-False question with specified id.
+    :param tfid: question id
+    :param quizid: used for redirecting to the edit page of the quiz
+    """
+    context_dict = {'tf_id': tfid, 'quiz_id': quizid}
 
     tf = TF_Question.objects.get(id=tfid)
     context_dict['tf_form'] = TFQuestionForm(instance=tf)
 
     if request.method == 'POST':
-        tf_form = TFQuestionForm(request.POST, instance=tf)
+        tf_form = TFQuestionForm(request.POST, request.FILES, instance=tf)
         if tf_form.is_valid():
             tf = tf_form.save(commit=False)
+            if 'figure' in request.FILES:
+                tf.figure = request.FILES['figure']
             tf.save()
 
-            return HttpResponseRedirect('/lfs_admin/edit_quiz/' + str(quizid) + '/')
+            return HttpResponseRedirect('/lfs_admin/edit_quiz/' +
+                                        str(quizid) + '/')
 
         else:
             print tf_form.errors
@@ -320,25 +333,28 @@ def edit_tfquestion(request, tfid, quizid):
     return render(request, 'lfs/modify/edit_tfquestion.html', context_dict)
 
 
-def delete_tfquestion(request, tfid):
+def delete_tfquestion(request, tfid, quizid):
     tf = TF_Question.objects.get(id=tfid)
     tf.delete()
-    return HttpResponse('Question deleted')
+    return HttpResponseRedirect('/lfs_admin/edit_quiz/' + str(quizid) + '/')
 
 
 def add_mcquestion(request, quizid):
-    """ Admin can edit/add/remove modules """
-    context_dict = {}
-    context_dict['mc_form'] = MCQuestionForm()
-    context_dict['answer_form'] = AnswerFormSet()
-    context_dict['quiz_id'] = quizid
+    """
+    Add Multiple-Choice question and associate it with the specified quiz.
+    :param quizid: quiz where the question belongs to
+    """
+    context_dict = {'mc_form': MCQuestionForm(),
+                    'answer_form': AnswerFormSet(), 'quiz_id': quizid}
 
     quiz = Quiz.objects.filter(id=quizid)[0]
 
     if request.method == 'POST':
-        mc_form = MCQuestionForm(request.POST)
+        mc_form = MCQuestionForm(request.POST, request.FILES)
         if mc_form.is_valid():
             mc = mc_form.save(commit=False)
+            if 'figure' in request.FILES:
+                mc.figure = request.FILES['figure']
             mc.save()
             mc.quiz.add(quiz)
 
@@ -348,7 +364,8 @@ def add_mcquestion(request, quizid):
             else:
                 print answer_formset.errors
 
-            return HttpResponseRedirect('/lfs_admin/edit_quiz/' + str(quizid) + '/')
+            return HttpResponseRedirect('/lfs_admin/edit_quiz/' +
+                                        str(quizid) + '/')
 
         else:
             print mc_form.errors
@@ -357,19 +374,23 @@ def add_mcquestion(request, quizid):
 
 
 def edit_mcquestion(request, mcid, quizid):
-    """ Admin can edit/add/remove modules """
-    context_dict = {}
-    context_dict['mc_id'] = mcid
-    context_dict['quiz_id'] = quizid
+    """
+    Edit the specified Multiple-Choice question.
+    :param mcid: question id
+    :param quizid: redirect to quiz edit page after editing question
+    """
+    context_dict = {'mc_id': mcid, 'quiz_id': quizid}
 
     mc = MCQuestion.objects.filter(id=mcid)[0]
 
     context_dict['mc_form'] = MCQuestionForm(instance=mc)
     context_dict['answer_form'] = AnswerFormSet(instance=mc)
     if request.method == 'POST':
-        mc_form = MCQuestionForm(request.POST, instance=mc)
+        mc_form = MCQuestionForm(request.POST, request.FILES, instance=mc)
         if mc_form.is_valid():
             mc = mc_form.save(commit=False)
+            if 'figure' in request.FILES:
+                mc.figure = request.FILES['figure']
             mc.save()
 
             answer_formset = AnswerFormSet(request.POST, instance=mc)
@@ -378,7 +399,8 @@ def edit_mcquestion(request, mcid, quizid):
             else:
                 print answer_formset.errors
 
-            return HttpResponseRedirect('/lfs_admin/edit_quiz/' + str(quizid) + '/')
+            return HttpResponseRedirect('/lfs_admin/edit_quiz/' +
+                                        str(quizid) + '/')
 
         else:
             print mc_form.errors
@@ -386,13 +408,13 @@ def edit_mcquestion(request, mcid, quizid):
     return render(request, 'lfs/modify/edit_mcquestion.html', context_dict)
 
 
-def delete_mcquestion(request, mcid):
+def delete_mcquestion(request, mcid, quizid):
     mc = MCQuestion.objects.get(id=mcid)
     answers = Answer.objects.filter(question=mc)
     for answer in answers:
         answer.delete()
     mc.delete()
-    return HttpResponse('Question deleted')
+    return HttpResponseRedirect('/lfs_admin/edit_quiz/' + str(quizid) + '/')
 
 
 @login_required

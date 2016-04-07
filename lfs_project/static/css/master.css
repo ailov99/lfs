@@ -36,7 +36,6 @@ body {
   Navbar
   --------------------*/
 .navbar {
-  z-index: 3;
   background: #1da13d;
   border-width: 0px 0px 2px 0px;
   border-color: rgba(0,0,0,0.15);
@@ -122,6 +121,14 @@ body {
   -moz-box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
   box-shadow: -12px -6px 19px -10px rgba(0,0,0,0.59);
 }
+
+.sidebar-circle {
+  overflow: hidden;
+  text-overflow: clip;
+  position: relative;
+}
+
+
 
 /*--------------------
   Module panels
@@ -289,13 +296,13 @@ a .panel-module, a:hover .panel-module, a:active .panel-module {
   Circular Progress Bar
   --------------------*/
 
-.circle strong {
+.circle p {
+  display: inline-block;
   position: absolute;
-  left:0px;
-  top:148px;
+  left: 0px;
+  margin-top: 42px;
   width: 100%;
   font-size: 300%;
-  text-align:center;
 }
 
 #profile_circle strong {

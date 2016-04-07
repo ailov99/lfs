@@ -407,3 +407,51 @@ class UserAppTests(TestCase):
         self.assertRedirects(response, '/lfs/modules/')
         self.assertEqual(Takers.objects.filter(user=self.user,
                                                module=user_mod).exists(), False)
+
+
+
+    def test_user_trial(self):
+        """
+        Unregistered users should be able to start a trial
+        """
+        mod = Module.objects.create(title="New Mod")
+        
+        response = self.c.get('/lfs/trial/')
+        cont = response.context
+
+        # mod is not a trial module -> empty
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(cont['trial'], True)
+        self.assertEqual(cont['modules_total'], 1)
+        self.assertEqual(cont['overall_progress'], 0)
+        self.assertEqual(len(cont['modules_progress']), 0)
+
+        mod_t = Module.objects.create(title="Trial Mod", trial=True)
+
+        response = self.c.get('/lfs/trial/')
+        cont = response.context
+
+        # mod_t is a trial module
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(cont['trial'], True)
+        self.assertEqual(cont['modules_total'], 2)
+        self.assertEqual(cont['overall_progress'], 0)
+        self.assertEqual(len(cont['modules_progress']), 1)
+        
+
+        
+
+    def test_user_trial_module(self):
+        """
+        Unregistered users should have access to a trial module's content
+        """
+        mod = Module.objects.create(title="Trial mod", trial=True)
+        Page.objects.create(module=mod,section="no",content="no")
+        
+        response = self.c.get('/lfs/trial/module/{0}/'.format(mod.id))
+        cont = response.context
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(cont['module_title'], "Trial mod")
+        self.assertEqual(cont['user_progress_on_module'], 0)
+        

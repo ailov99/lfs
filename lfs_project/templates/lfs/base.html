@@ -55,7 +55,7 @@
           <li class="{% if nbar == 'leaderboard' %}active{% endif %}"><a href="{% url 'leaderboard' %}"><i class="fa fa-trophy"></i> Leaderboard</a></li>
           <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log out</a></li>
         {% else %}
-            <li><a href="{% url 'trial_dashboard' %}"> Trial</a></li>
+            <li class="{% if nbar == 'trial' %}active{% endif %}" ><a href="{% url 'trial_dashboard' %}"> Trial</a></li>
           {% if nbar == 'login' %}
             <li><a href="#login"> Log In</a></li>
           {% else %}
@@ -121,8 +121,8 @@
          <!-- sidebar -->
           </br>
           <h2>Progress</h2>
-          <div class="circle" id="sidebar_circle">
-            <strong>{{ overall_progress }}%</strong>
+          <div class="circle sidebar-circle" id="sidebar_circle">
+            <p>{{ overall_progress }}%</p>
           </div>
           <script>
               $('#sidebar_circle').circleProgress({

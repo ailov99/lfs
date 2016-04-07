@@ -29,7 +29,7 @@
                   </ul>
 	           <div class="row mt5">
                 <div class="col-md-9 col-xs-9">
-                  <a id="back-btn" href="{% url 'index' %}" type="button" class="btn btn-prim"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
+                  <a id="back-btn" href="{% url 'trial_dashboard' %}" type="button" class="btn btn-prim"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
                   <a id="prev-page" type="button" class="btn btn-prim"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back</a>
                 </div><!-- ./col-md-10-->
 
@@ -47,8 +47,8 @@
         <!-- sidebar -->
         <br>
         <h2>Progress of Module</h2>
-        <div class="circle" id="sidebar_circle">
-          <strong>{{ user_progress_on_module }}%</strong>
+        <div class="circle sidebar-circle" id="sidebar_circle">
+          <p id="sidebar_circle_percentage">{{ user_progress_on_module }}%</p>
         </div>
         <script>
             $('#sidebar_circle').circleProgress({

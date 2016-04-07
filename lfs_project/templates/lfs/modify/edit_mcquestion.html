@@ -17,7 +17,7 @@
                 <h2 class="page-heading">Edit Question: Multi Choice</h2>
                 <hr>
                 <!-- main body -->
-                <a href="{% url 'delete_mcquestion'  mc_id %}" type="button" class="btn btn-danger">
+                <a href="{% url 'delete_mcquestion' mc_id quiz_id %}" type="button" class="btn btn-danger">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete Question
                 </a>
                 <form id="mc_form" method="post" action="{% url 'edit_mcquestion' mc_id quiz_id %}"

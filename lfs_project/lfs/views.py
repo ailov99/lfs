@@ -9,20 +9,18 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.core.exceptions import ObjectDoesNotExist
 from lfs.models import Teacher, Takers, Module, Page, ContentFile
 from lfs_admin.models import Administrator, UserRegistrations, AnonHits
-from lfs.forms import UserForm, TeacherForm, ModuleForm, ContentForm, PageForm
-from django.utils.encoding import smart_str
+from lfs.forms import UserForm, TeacherForm
 from wsgiref.util import FileWrapper
 from hitcount.models import HitCount
 from hitcount.views import HitCountMixin
 from datetime import date
-from django.contrib.auth.hashers import *
 
-import mimetypes
 import os
 
 # Logg stuff
 import logging
-logging.basicConfig(filename='wtf.log',level=logging.INFO)
+
+logging.basicConfig(filename='wtf.log', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
@@ -43,7 +41,7 @@ def user_register(request):
 
     # check if user is admin
     if request.user.is_authenticated():
-        if Administrator.objects.filter(user = request.user).exists():
+        if Administrator.objects.filter(user=request.user).exists():
             context_dict['is_admin'] = True
 
     if request.method == 'POST':
@@ -65,7 +63,6 @@ def user_register(request):
             # Use default (empty values) for all other Teacher fields
             Teacher.objects.create(user=user)
 
-
             for module in Module.objects.filter(compulsory=True):
                 Takers.objects.create(user=user, module=module)
 
@@ -79,6 +76,7 @@ def user_register(request):
 
     return render(request, 'lfs/login/register.html', context_dict)
 
+
 def user_login(request):
     """ User login """
 
@@ -90,20 +88,20 @@ def user_login(request):
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user:
-	        if user.is_active:
-	            # this acc is active
-	            login(request, user)
-	            # TODO: redirect to dashboard once page is finished
-	            return HttpResponseRedirect('/lfs/dashboard/')
+            if user.is_active:
+                # this acc is active
+                login(request, user)
+                # Redirect to dashboard once page is finished
+                return HttpResponseRedirect('/lfs/dashboard/')
 
-	        else:
-	            # acc inactive
-	            return HttpResponse('Inactive acount')
+            else:
+                # acc inactive
+                return HttpResponse('Inactive acount')
 
         else:
-	        # bad details
-	        context_dict['errors'] = 'Please enter valid login details'
-	        return render(request, 'lfs/login/login.html', context_dict)
+            # bad details
+            context_dict['errors'] = 'Please enter valid login details'
+            return render(request, 'lfs/login/login.html', context_dict)
 
     else:
         # GET -> display dashboard
@@ -128,13 +126,13 @@ def user_dashboard(request):
     context_dict = {}
     context_dict['is_admin'] = False
 
-    #check if user is logged in
+    # check if user is logged in
     if request.user.is_authenticated():
         user = request.user
-        #check if user is an admin
-        if Administrator.objects.filter(user = user).exists():
+        # check if user is an admin
+        if Administrator.objects.filter(user=user).exists():
             context_dict['is_admin'] = True
-        
+
     # pass which navbar tab is active
     context_dict['nbar'] = 'home'
 
@@ -149,14 +147,16 @@ def user_dashboard(request):
     # (sum of progress in all modules / # modules taken)
     modules_taken_count = takers_record.filter(user=user).count()
     if modules_taken_count != 0:
-        context_dict['overall_progress'] = reduce(lambda x,y: x+y, [i.progress for i in takers_record if i.user==user], 0) / modules_taken_count
+        context_dict['overall_progress'] = reduce(lambda x, y: x + y,
+                                                  [i.progress for i in takers_record if i.user == user],
+                                                  0) / modules_taken_count
     else:
         context_dict['overall_progress'] = 0
 
     # pass all modules taken by user as a dict(module_name : progress)
-    context_dict['modules_progress'] = {i.module : i.progress for i in takers_record if i.user==user}
+    context_dict['modules_progress'] = {i.module: i.progress for i in takers_record if i.user == user}
     if context_dict['is_admin']:
-        context_dict['modules_progress'] = {i : 0 for i in Module.objects.all()}
+        context_dict['modules_progress'] = {i: 0 for i in Module.objects.all()}
         for i in Module.objects.all():
             Takers.objects.get_or_create(user=user, module=i)
         context_dict['overall_progress'] = 0
@@ -165,11 +165,10 @@ def user_dashboard(request):
     context_dict['modules_total'] = Module.objects.all().count()
 
     # completed modules
-    context_dict['modules_completed'] = {i.module : i.progress for i in takers_record if i.user==user and i.progress == 100}
+    context_dict['modules_completed'] = {i.module: i.progress for i in takers_record if
+                                         i.user == user and i.progress == 100}
 
     # also pass if admin
-
-
 
     return render(request, 'lfs/index.html', context_dict)
 
@@ -178,6 +177,7 @@ def user_dashboard(request):
 def user_contact_admin(request, userid):
     """ User contacts an admin """
     pass
+
 
 @login_required
 def leaderboard(request):
@@ -199,19 +199,23 @@ def leaderboard(request):
     # (sum of progress in all modules / # modules taken)
     modules_taken_count = takers_record.filter(user=user).count()
     if modules_taken_count != 0:
-        context_dict['overall_progress'] = reduce(lambda x,y: x+y, [i.progress for i in takers_record if i.user==user], 0) / modules_taken_count
+        context_dict['overall_progress'] = reduce(lambda x, y: x + y,
+                                                  [i.progress for i in takers_record if i.user == user],
+                                                  0) / modules_taken_count
     else:
         context_dict['overall_progress'] = 0
 
     all_modules = Module.objects.all()
     # pass all modules as a dict with dict(module_name : [(name, progress)])
-    context_dict['leaderboards'] = {str(i.title) : [(j.user, j.progress)for j in takers_record if j.module==i] for i in all_modules}
+    context_dict['leaderboards'] = {str(i.title): [(j.user, j.progress) for j in takers_record if j.module == i] for i
+                                    in all_modules}
 
     # also pass total number of modules available throughout the platform
     context_dict['modules_total'] = Module.objects.all().count()
 
     # completed modules
-    context_dict['modules_completed'] = {i.module : i.progress for i in takers_record if i.user==user and i.progress == 100}
+    context_dict['modules_completed'] = {i.module: i.progress for i in takers_record if
+                                         i.user == user and i.progress == 100}
 
     # pass per-user overall progress as:
     # { username : overall_progress }
@@ -220,13 +224,15 @@ def leaderboard(request):
     for j in all_users:
         modules_taken_count = takers_record.filter(user=j).count()
         if modules_taken_count != 0:
-            context_dict['all_users_overall_progress'].update({j: reduce(lambda x,y: x+y, [i.progress for i in takers_record if i.user==j], 0) / modules_taken_count})
+            context_dict['all_users_overall_progress'].update({j: reduce(lambda x, y: x + y,
+                                                                         [i.progress for i in takers_record if
+                                                                          i.user == j], 0) / modules_taken_count})
 
         else:
-            context_dict['all_users_overall_progress'].update({j:0})
-
+            context_dict['all_users_overall_progress'].update({j: 0})
 
     return render(request, 'lfs/leaderboard.html', context_dict)
+
 
 def profile(request, userid):
     """ Profile of selected user """
@@ -249,20 +255,24 @@ def profile(request, userid):
     # (sum of progress in all modules / # modules taken)
     modules_taken_count = takers_record.filter(user=user).count()
     if modules_taken_count != 0:
-        context_dict['overall_progress'] = reduce(lambda x,y: x+y, [i.progress for i in takers_record if i.user==user], 0) / modules_taken_count
+        context_dict['overall_progress'] = reduce(lambda x, y: x + y,
+                                                  [i.progress for i in takers_record if i.user == user],
+                                                  0) / modules_taken_count
     else:
         context_dict['overall_progress'] = 0
 
     # pass all modules taken by user as a dict(module_name : progress)
-    context_dict['modules_progress'] = {str(i.module.title) : i.progress for i in takers_record if i.user==user}
+    context_dict['modules_progress'] = {str(i.module.title): i.progress for i in takers_record if i.user == user}
 
     # also pass total number of modules available throughout the platform
     context_dict['modules_total'] = Module.objects.all().count()
 
     # completed modules
-    context_dict['modules_completed'] = {i.module : i.progress for i in takers_record if i.user==user and i.progress == 100}
+    context_dict['modules_completed'] = {i.module: i.progress for i in takers_record if
+                                         i.user == user and i.progress == 100}
 
     return render(request, 'lfs/profile.html', context_dict)
+
 
 @login_required
 def edit_profile(request, userid):
@@ -280,23 +290,22 @@ def edit_profile(request, userid):
             # just redisplay the profile
             return HttpResponseRedirect('/lfs/profile/{0}/'.format(user.id))
 
-
     if not user.is_staff:
         teacher = Teacher.objects.filter(user=user)[0]
         context_dict['teacher'] = teacher
     changed = False
 
     # get the instance of the user
-    context_dict['user_form'] = UserForm(instance = user)
-    context_dict['teacher_form'] = TeacherForm(instance = teacher)
+    context_dict['user_form'] = UserForm(instance=user)
+    context_dict['teacher_form'] = TeacherForm(instance=teacher)
 
     if request.method == 'POST':
         # Attempt to grab information from the raw form information.
-        user_form = UserForm(request.POST, request.FILES, instance= user)
-        teacher_form = TeacherForm(request.POST, request.FILES, instance= teacher)
+        user_form = UserForm(request.POST, request.FILES, instance=user)
+        teacher_form = TeacherForm(request.POST, request.FILES, instance=teacher)
         # check if password is correct
         if user.check_password(user_form.data['password']):
-            if  user_form.is_valid():
+            if user_form.is_valid():
                 if teacher_form.is_valid():
                     user = user_form.save()
 
@@ -312,8 +321,8 @@ def edit_profile(request, userid):
                     login(request, user)
 
                     context_dict.update(get_profileDetails(request, username))
-                    context_dict['user_form'] = UserForm(instance = user)
-                    context_dict['teacher_form'] = TeacherForm(instance = teacher)
+                    context_dict['user_form'] = UserForm(instance=user)
+                    context_dict['teacher_form'] = TeacherForm(instance=teacher)
                     changed = True
                 else:
                     context_dict['message'] = teacher_form.errors
@@ -326,8 +335,8 @@ def edit_profile(request, userid):
     if changed:
         return HttpResponseRedirect('/lfs/profile/{0}/'.format(user.id))
 
+    return render(request, 'lfs/modify/edit_profile.html', context_dict)  # Does this work?
 
-    return render(request, 'lfs/modify/edit_profile.html', context_dict) #Does this work?
 
 def change_password(request):
     """ Change Password """
@@ -364,15 +373,16 @@ def change_password(request):
         else:
             context_dict['message'] = "Current password is incorrect"
 
-    return render(request, 'lfs/modify/change_password.html', context_dict) #TODO not sure what to put here
+    return render(request, 'lfs/modify/change_password.html', context_dict)  # TODO not sure what to put here
+
 
 def get_profileDetails(request, username):
     """ Gets user info needed for displaying profile"""
     context_dict = {}
 
-    user = User.objects.get(username = username)
+    user = User.objects.get(username=username)
 
-    teacher = Teacher.objects.get(user = user)
+    teacher = Teacher.objects.get(user=user)
 
     context_dict['username'] = user.username
     context_dict['first_name'] = user.first_name
@@ -382,39 +392,40 @@ def get_profileDetails(request, username):
 
     return context_dict
 
+
 @login_required
 def forum(request):
     """ shows forum template """
-    #context_dict = {}
+    # context_dict = {}
 
     # get currently logged in user
-    #user = request.user
-    #if not user.is_staff:
+    # user = request.user
+    # if not user.is_staff:
     #    teacher = Teacher.objects.filter(user=user)[0]
     #    context_dict['teacher'] = teacher
 
     # pass which navbar tab is active
-    #context_dict['nbar'] = 'forum'
+    # context_dict['nbar'] = 'forum'
 
-    #takers_record = Takers.objects.all()
+    # takers_record = Takers.objects.all()
     # teacher's overall progress =
     # (sum of progress in all modules / # modules taken)
-    #modules_taken_count = takers_record.filter(user=user).count()
-    #if modules_taken_count != 0:
+    # modules_taken_count = takers_record.filter(user=user).count()
+    # if modules_taken_count != 0:
     #    context_dict['overall_progress'] = reduce(lambda x,y: x+y, [i.progress for i in takers_record if i.user==user], 0) / modules_taken_count
-    #else:
+    # else:
     #    context_dict['overall_progress'] = 0
 
     # pass all modules taken by user as a dict(module_name : progress)
-    #context_dict['modules_progress'] = {i.module : i.progress for i in takers_record if i.user==user}
+    # context_dict['modules_progress'] = {i.module : i.progress for i in takers_record if i.user==user}
 
     # also pass total number of modules available throughout the platform
-    #context_dict['modules_total'] = Module.objects.all().count()
+    # context_dict['modules_total'] = Module.objects.all().count()
 
     # completed modules
-    #context_dict['modules_completed'] = {i.module : i.progress for i in takers_record if i.user==user and i.progress == 100}
+    # context_dict['modules_completed'] = {i.module : i.progress for i in takers_record if i.user==user and i.progress == 100}
 
-    #return render(request, 'lfs/forum.html', context_dict)
+    # return render(request, 'lfs/forum.html', context_dict)
     return HttpResponseRedirect('/forum/')
 
 
@@ -423,25 +434,27 @@ def user_subscription(request, userid):
     """ Subscription service """
     pass
 
+
 @login_required
 def pick_module(request, moduleid):
     """ Allows user to modify their module choices by enrolling in a module """
     user = request.user
-    module = Module.objects.get(id = moduleid)
+    module = Module.objects.get(id=moduleid)
 
-    if not Takers.objects.filter(user = user, module = module).exists():
-        taker = Takers.objects.create(user = user, module = module)
+    if not Takers.objects.filter(user=user, module=module).exists():
+        taker = Takers.objects.create(user=user, module=module)
 
     return HttpResponseRedirect('/lfs/modules/')
+
 
 @login_required
 def drop_module(request, moduleid):
     """ Allows user to modify their module choices by unenrolling from a module"""
     user = request.user
-    module = Module.objects.get(id = moduleid)
+    module = Module.objects.get(id=moduleid)
 
-    if Takers.objects.filter(user = user, module = module).exists():
-        Takers.objects.filter(user = user, module = module).delete()
+    if Takers.objects.filter(user=user, module=module).exists():
+        Takers.objects.filter(user=user, module=module).delete()
 
     return HttpResponseRedirect('/lfs/modules/')
 
@@ -455,23 +468,22 @@ def modules(request):
     context_dict['is_admin'] = False
     modules = Module.objects.all()
 
-    #check if user is logged in
+    # check if user is logged in
     if request.user.is_authenticated():
         user = request.user
-        if Administrator.objects.filter(user = user).exists():
+        if Administrator.objects.filter(user=user).exists():
             context_dict['is_admin'] = True
             for m in modules:
                 context_dict['modules'].append(m)
 
         # if user is a teacher split modules into taken and not taken for display order
-        elif Teacher.objects.filter(user = user).exists():
-            teacher = Teacher.objects.get(user = user)
+        elif Teacher.objects.filter(user=user).exists():
+            teacher = Teacher.objects.get(user=user)
             for m in modules:
                 if user in m.taker.all():
                     context_dict['modules_taken'].append(m)
                 else:
                     context_dict['modules'].append(m)
-
 
     return render(request, 'lfs/modules.html', context_dict)
 
@@ -503,9 +515,8 @@ def module(request, moduleid):
     context_dict['module_id'] = moduleid
     if request.user.is_authenticated():
         user = request.user
-        if Administrator.objects.filter(user = user).exists():
+        if Administrator.objects.filter(user=user).exists():
             context_dict['is_admin'] = True
-
 
     context_dict['pages'] = module.page_set.all()
 
@@ -527,15 +538,14 @@ def module(request, moduleid):
 
     context_dict['module_downloadable'] = tuple(i for i in ContentFile.objects.filter(module=module))
 
-
     return render(request, 'lfs/content.html', context_dict)
 
 
 def update_progress(request, moduleid, pagenum):
     """ Updates the progress of a user while reading module content """
-    #get user and module relation
+    # get user and module relation
     user = request.user
-    module = Module.objects.get(id = moduleid)
+    module = Module.objects.get(id=moduleid)
     # if user has not finished all the pages
     response = render(request, 'lfs/content.html', {'module_id': moduleid})
     # get total number of pages
@@ -545,14 +555,14 @@ def update_progress(request, moduleid, pagenum):
         if taker.progress < 50:
             progress = 1.0
             # get current page/ all pages ratio
-            progress = (float(pagenum) + 1.0)/pages_count
-            taker.progress = 50*progress
+            progress = (float(pagenum) + 1.0) / pages_count
+            taker.progress = 50 * progress
             taker.save()
     else:
         title = str(module.title).replace(' ', '_')
         current_progress = int(request.COOKIES.get(title, '0'))
         if current_progress < 50:
-            progress = (float(pagenum) + 1.0)/pages_count * 50
+            progress = (float(pagenum) + 1.0) / pages_count * 50
             if current_progress < progress:
                 response.set_cookie(title, int(progress))
 
@@ -577,6 +587,7 @@ def message(request, messageid):
     """ View a particular message (from the inbox) """
     pass
 
+
 # ----------------------- Admin Pages -----------------------------------
 
 @login_required
@@ -587,13 +598,14 @@ def admin_guide(request):
 
     if request.user.is_authenticated():
         user = request.user
-        if Administrator.objects.filter(user = user).exists():
+        if Administrator.objects.filter(user=user).exists():
             context_dict['is_admin'] = True
 
     # pass which navbar tab is active
     context_dict['nbar'] = 'admin_guide'
 
-    return render(request,'lfs/admin_guide.html', context_dict)
+    return render(request, 'lfs/admin_guide.html', context_dict)
+
 
 # ----------------------- Trial Pages -----------------------------------
 
@@ -601,8 +613,10 @@ def trial_dashboard(request):
     """ Trial dashboard with all trial modules """
 
     context_dict = {}
-
     context = RequestContext(request)
+
+    # pass which navbar tab is active
+    context_dict['nbar'] = 'trial'
 
     context_dict['trial'] = True
 
@@ -610,9 +624,11 @@ def trial_dashboard(request):
     modules_count = Module.objects.filter(trial=True).count()
 
     # pass all trial modules a dict(module_name : progress)
-    context_dict['modules_progress'] = {i : int(request.COOKIES.get(str(i).replace(' ', '_'), '0')) for i in modules}
+    context_dict['modules_progress'] = {i: int(request.COOKIES.get(str(i).replace(' ', '_'), '0')) for i in modules}
     if modules_count != 0:
-        context_dict['overall_progress'] = reduce(lambda x,y: x+y, [value for key, value in context_dict['modules_progress'].iteritems()], 0) / modules_count
+        context_dict['overall_progress'] = reduce(lambda x, y: x + y, [value for key, value in
+                                                                       context_dict['modules_progress'].iteritems()],
+                                                  0) / modules_count
     else:
         context_dict['overall_progress'] = 0
 
@@ -620,7 +636,7 @@ def trial_dashboard(request):
     context_dict['modules_total'] = Module.objects.all().count()
 
     # assign cookie values
-    cookie_lifetime = 60 * 60 # all cookies should last for an hour
+    cookie_lifetime = 60 * 60  # all cookies should last for an hour
 
     response = render_to_response('lfs/trial/index.html', context_dict, context)
 
@@ -630,11 +646,15 @@ def trial_dashboard(request):
 
     return response
 
+
 def trial_module(request, moduleid):
     """ A particular trial module's contents """
 
     context_dict = {}
     context = RequestContext(request)
+
+    # pass which navbar tab is active
+    context_dict['nbar'] = 'trial'
 
     module = Module.objects.get(id=moduleid)
 
@@ -656,7 +676,7 @@ def trial_module(request, moduleid):
     context_dict['module_downloadable'] = tuple(i for i in ContentFile.objects.filter(module=module))
 
     # assign cookie values
-    cookie_lifetime = 60 * 60 # all cookies should last for an hour
+    cookie_lifetime = 60 * 60  # all cookies should last for an hour
 
     response = render_to_response('lfs/trial/content.html', context_dict, context)
     response.set_cookie(title, context_dict['user_progress_on_module'], max_age=cookie_lifetime)

@@ -75,8 +75,8 @@ class Takers(models.Model):
 class Page(models.Model):
     module = models.ForeignKey(Module)
 
-    position = models.IntegerField(default=0) #order of page
-    section = models.CharField(max_length=200) # title of section
+    position = models.IntegerField(default=0)  # order of page
+    section = models.CharField(max_length=200)  # title of section
     content = models.TextField()
 
     # Maintain table order by insertion time

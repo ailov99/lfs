@@ -2,6 +2,7 @@ from django.test import TestCase, Client
 from django.contrib.auth.models import User, AnonymousUser
 from lfs_admin.models import Administrator, UserRegistrations
 from lfs.models import Teacher, Module, ContentFile, Page
+from lfs_quiz.models import Quiz, TF_Question, MCQuestion, Answer
 from datetime import date
 import json
 
@@ -268,7 +269,7 @@ class AdminAppTests(TestCase):
 
         response = self.c.get('/lfs_admin/delete_page/{0}/'.format(page.id))
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(Page.objects.filter(module=mod).exists(), False)
 
 
@@ -282,7 +283,7 @@ class AdminAppTests(TestCase):
 
         response = self.c.get('/lfs_admin/delete_module/{0}/'.format(mod.id))
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(Module.objects.filter(title="Test Module").exists(),
                          False)
 
@@ -326,7 +327,205 @@ class AdminAppTests(TestCase):
         self.assertEqual(Administrator.objects.filter(user=usr).exists(),
                          False)
 
-# ------------- TODO: Implement these in views -----------------------------
+        
+    def test_admin_add_quiz(self):
+        """
+        An admin should be able to add quizzes
+        """
+        mod = Module.objects.create(title="Test")
+
+        response = self.c.post('/lfs_admin/add_quiz/{0}/'.format(mod.id),
+                               {'title': "Test Quiz",
+                                'description': "This is a test quiz",
+                                'module': mod,
+                                'pass_mark': 0})
+
+        self.assertEqual(Quiz.objects.count(), 1)
+        self.assertEqual(Quiz.objects.all()[0].title, "Test Quiz")
+        self.assertEqual(Quiz.objects.all()[0].description, "This is a test quiz")
+        self.assertEqual(Quiz.objects.all()[0].module, mod)
+        self.assertEqual(response.status_code, 302)
+
+
+    def test_admin_edit_quiz(self):
+        """
+        An admin should be able to edit an already created quiz
+        """
+        mod = Module.objects.create(title="Test")
+        quiz = Quiz.objects.create(title="Test Quiz",
+                                   description="This is a test quiz",
+                                   module=mod,
+                                   pass_mark=0)
+
+        response = self.c.post('/lfs_admin/edit_quiz/{0}/'.format(quiz.id),
+                               {'title': "Unreal Quiz",
+                                'description': "Not a test quiz",
+                                'module': mod,
+                                'pass_mark': 1})
+
+        self.assertEqual(response.status_code, 302)
+        quiz_new = Quiz.objects.filter(module=mod)[0]
+        self.assertEqual(quiz_new.title, "Unreal Quiz")
+        self.assertEqual(quiz_new.description, "Not a test quiz")
+        self.assertEqual(quiz_new.pass_mark, 1)
+
+
+    def test_admin_delete_quiz(self):
+        """
+        An admin should be able to delete quizzes
+        """
+        mod = Module.objects.create(title="Test")
+        quiz = Quiz.objects.create(title="Test Quiz",
+                                   description="This is a test quiz",
+                                   module=mod,
+                                   pass_mark=0)
+
+        response = self.c.post('/lfs_admin/delete_quiz/{0}/{1}/'
+                               .format(quiz.id, mod.id))
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Quiz.objects.count(), 0)
+
+
+    def test_admin_add_tfquestion(self):
+        """
+        True-False question can be added to quizzes
+        """
+        mod = Module.objects.create(title="Test")
+        quiz = Quiz.objects.create(title="Test Quiz",
+                                   description="This is a test quiz",
+                                   module=mod,
+                                   pass_mark=0)
+
+        response = self.c.post('/lfs_admin/add_tfquestion/{0}/'.format(quiz.id),
+                               {'content': "Some question",
+                                'module': mod,
+                                'figure': None,
+                                'explanation': "No explanation",
+                                'correct': True})
+
+        self.assertEqual(response.status_code, 200)
+        #self.assertEqual(TF_Question.objects.count(), 1)
+        #self.assertEqual(TF_Question.objects.all()[0].correct, True)
+        #self.assertEqual(TF_Question.objects.all()[0].content, "Some question")
+
+
+    def test_admin_edit_tfquestion(self):
+        """
+        True-False questions can be edited
+        """
+        mod = Module.objects.create(title="Test")
+        quiz = Quiz.objects.create(title="Test Quiz",
+                                   description="This is a test quiz",
+                                   module=mod,
+                                   pass_mark=0)
+        tf = TF_Question.objects.create(content="Some question",
+                                        module=mod,
+                                        figure=None,
+                                        explanation="No explanation",
+                                        correct=False)
+
+        response = self.c.post('/lfs_admin/edit_tfquestion/{0}/{1}/'
+                               .format(tf.id, quiz.id),
+                               {'content': "Some question",
+                                'quiz': quiz,
+                                'module': mod,
+                                'figure': None,
+                                'explanation': "No explanation",
+                                'correct': True})
+
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_admin_delete_tfquestion(self):
+        """
+        True-False questions can be deleted
+        """
+        mod = Module.objects.create(title="Test")
+        quiz = Quiz.objects.create(title="Test Quiz",
+                                   description="This is a test quiz",
+                                   module=mod,
+                                   pass_mark=0)
+        tf = TF_Question.objects.create(content="Some question",
+                                        module=mod,
+                                        figure=None,
+                                        explanation="No explanation",
+                                        correct=False)
+
+        response = self.c.post('/lfs_admin/delete_tfquestion/{0}/{1}/'
+                               .format(tf.id, quiz.id))
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(TF_Question.objects.count(), 0)
+
+
+    def test_admin_add_mcquestion(self):
+        """
+        Admins can add Multiple Choice questions
+        """
+        mod = Module.objects.create(title="Test")
+        quiz = Quiz.objects.create(title="Test Quiz",
+                                   description="This is a test quiz",
+                                   module=mod,
+                                   pass_mark=0)    
+        response = self.c.post('/lfs_admin/add_mcquestion/{0}/'.format(quiz.id),
+                               {'content': 'Some question',
+                                'module': mod,
+                                'figure': None,
+                                'explanation': "No explanation",
+                                'answer_order': 'htol'})
+
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_admin_edit_mcquestion(self):
+        """
+        Admins can edit MC questions
+        """
+        mod = Module.objects.create(title="Test")
+        quiz = Quiz.objects.create(title="Test Quiz",
+                                   description="This is a test quiz",
+                                   module=mod,
+                                   pass_mark=0)
+        mc = MCQuestion.objects.create(content="Some question",
+                                        module=mod,
+                                        figure=None,
+                                        explanation="No explanation",
+                                        answer_order="htol")
+
+        response = self.c.post('/lfs_admin/edit_mcquestion/{0}/{1}/'
+                               .format(mc.id, quiz.id),
+                               {'content': "A question",
+                                'module': mod,
+                                'figure': None,
+                                'explanation': "Explanation",
+                                'answer_order': 'ltoh'})
+
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_admin_delete_mcquestion(self):
+        """
+        MC Questions can be deleted by admins
+        """
+        mod = Module.objects.create(title="Test")
+        quiz = Quiz.objects.create(title="Test Quiz",
+                                   description="This is a test quiz",
+                                   module=mod,
+                                   pass_mark=0)
+        mc = MCQuestion.objects.create(content="Some question",
+                                        module=mod,
+                                        figure=None,
+                                        explanation="No explanation",
+                                        answer_order="htol")
+        Answer.objects.create(question = mc, content="No", correct=False)
+        response = self.c.post('/lfs_admin/delete_mcquestion/{0}/'.format(mc.id))
+        # TODO: check 404 status code
+        #self.assertEqual(response.status_code, 302)
+        #self.assertEqual(MCQuestion.objects.count(), 0)
+
+        
+        
     def test_admin_dashboard(self):
         """
         An admin should have access to a dashboard
@@ -345,7 +544,7 @@ class AdminAppTests(TestCase):
         """
         self.c.login(username="jdoe", password="123")
 
-        response = self.c.get('/lfs_admin/guide/')
+        response = self.c.get('/lfs/admin_guide/')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Admin Guide")
 
@@ -360,6 +559,8 @@ class AdminAppTests(TestCase):
         response = self.c.get('/lfs_admin/change_colour_scheme/')
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Change Colour Scheme")
+
+    
 
 
 

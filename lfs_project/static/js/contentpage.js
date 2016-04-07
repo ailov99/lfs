@@ -15,6 +15,12 @@ $(document).ready(function(){
       $.get('/lfs/update_progress/'+moduleid+'/'+page);
   	  $("#prev-page").show();
   	  $("#page"+page).hide();
+  	  // update progress bar if needed
+  	  var progress = page / pages * 0.5;
+  	  if (progress > $('#sidebar_circle').circleProgress('value')) {
+  	      $('#sidebar_circle').circleProgress('value', progress);
+  	      document.getElementById("sidebar_circle_percentage").innerHTML = progress * 100 + "%";
+  	  }
       $("#back-btn").hide();
   	  page++;
       // if last page, show quiz button and hide next button
@@ -37,3 +43,4 @@ $(document).ready(function(){
       $("#page"+page).show();
   });
 });
+

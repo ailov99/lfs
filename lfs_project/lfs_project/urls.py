@@ -19,9 +19,9 @@ from django.contrib import admin
 
 urlpatterns = patterns('',
 
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^lfs/', include('lfs.urls')),
-    url(r'^lfs_admin/', include('lfs_admin.urls')),
-    url(r'^lfs_quiz/', include('lfs_quiz.urls')),
-    url(r'^forum/', include('pybb.urls', namespace='pybb')),
-)
+                       url(r'^admin/', include(admin.site.urls)),
+                       url(r'^lfs/', include('lfs.urls')),
+                       url(r'^lfs_admin/', include('lfs_admin.urls')),
+                       url(r'^lfs_quiz/', include('lfs_quiz.urls')),
+                       url(r'^forum/', include('pybb.urls', namespace='pybb')),
+                       )

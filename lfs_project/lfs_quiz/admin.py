@@ -5,6 +5,7 @@ from django.contrib.admin.widgets import FilteredSelectMultiple
 from .models import Quiz, Progress, Question,\
                     MCQuestion, Answer, TF_Question
 
+
 class AnswerInline(admin.TabularInline):
     model = Answer
 

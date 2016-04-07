@@ -11,20 +11,13 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-#from lfs.models import Teacher
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
 
-
 # template directory path
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
-
-# template directory
-
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -36,7 +29,6 @@ SECRET_KEY = '(j*l-k*=c400^r-^2ns6-&#1g(jbj#mf2+zx&6#z&s7q))=a*h'
 DEBUG = True
 
 TEMPLATE_DEBUG = True
-
 
 ALLOWED_HOSTS = []
 
@@ -51,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'lfs',
-    'lfs_forum',
     'lfs_admin',
     'lfs_quiz',
     'bootstrapform',
@@ -63,7 +54,6 @@ INSTALLED_APPS = [
 TEMPLATE_DIRS = [TEMPLATE_PATH]
 
 MIDDLEWARE_CLASSES = [
-    #'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -84,28 +74,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.i18n',
     'django.contrib.auth.context_processors.auth',
-    #'django.contrib.messages.context_processors.messages',
     'pybb.context_processors.processor',
 )
 
-#TEMPLATES = [
-#    {
-#        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-#        'DIRS': [TEMPLATE_PATH],
-#        'APP_DIRS': True,
-#        'OPTIONS': {
-#            'context_processors': [
-#                'django.template.context_processors.debug',
-#                'django.template.context_processors.request',
-#                'django.contrib.auth.context_processors.auth',
-#                'django.contrib.messages.context_processors.messages',
-#            ],
-#        },
-#    },
-#]
-
 WSGI_APPLICATION = 'lfs_project.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -117,13 +89,12 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
 AUTH_PROFILE_MODULE = 'lfs.models.Teacher'
 
-#AUTH_PASSWORD_VALIDATORS = [
+# AUTH_PASSWORD_VALIDATORS = [
 #    {
 #        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
 #    },
@@ -136,7 +107,7 @@ AUTH_PROFILE_MODULE = 'lfs.models.Teacher'
 #    {
 #        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
 #    },
-#]
+# ]
 
 
 # Internationalization
@@ -151,7 +122,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -170,7 +140,7 @@ MEDIA_URL = '/static/img/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
 
 # PYBB forum settings
-#PYBB_PROFILE_RELATED_NAME = Teacher
+# PYBB_PROFILE_RELATED_NAME = Teacher
 PYBB_DEFAULT_TITLE = 'LFS Forum'
 PYBB_SMILES_PREFIX = 'pybb/emoticons/'
 
@@ -180,9 +150,9 @@ LOGIN_URL = '/lfs/login/'
 LOGIN_REDIRECT_URL = '/lfs/'
 
 # Hitcount app
-HITCOUNT_KEEP_HIT_ACTIVE = {'days': 1 }
-HITCOUNT_KEEP_HIT_IN_DATABASE = { 'days': 8 }
+HITCOUNT_KEEP_HIT_ACTIVE = {'days': 1}
+HITCOUNT_KEEP_HIT_IN_DATABASE = {'days': 8}
 
 # Enforce password strength
 PASSWORD_MIN_LENGTH = 8
-PASSWORD_COMPLEXITY = { "UPPER":  1, "LOWER":  1, "DIGITS": 1 }
+PASSWORD_COMPLEXITY = {"UPPER": 1, "LOWER": 1, "DIGITS": 1}

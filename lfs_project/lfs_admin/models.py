@@ -6,6 +6,7 @@ from hitcount.models import HitCountMixin
 
 from datetime import date
 
+
 class Administrator(models.Model):
     """ Admin representation in database, subclass of User """
     user = models.OneToOneField(User)
@@ -14,6 +15,7 @@ class Administrator(models.Model):
 
     def __unicode__(self):
         return self.user.username
+
 
 class UserRegistrations(models.Model, HitCountMixin):
     """ 
@@ -25,11 +27,12 @@ class UserRegistrations(models.Model, HitCountMixin):
     count = models.IntegerField(default=0)
 
     def inc(self):
-        self.count = self.count + 1
+        self.count += 1
         self.save()
-    
+
     def __unicode__(self):
         return str(self.time)
+
 
 class AnonHits(models.Model, HitCountMixin):
     """
@@ -39,7 +42,7 @@ class AnonHits(models.Model, HitCountMixin):
     count = models.IntegerField(default=0)
 
     def inc(self):
-        self.count = self.count + 1
+        self.count += 1
         self.save()
 
     def __unicode__(self):

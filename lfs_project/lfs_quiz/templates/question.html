@@ -27,7 +27,7 @@
                 <p class="lead">{{ question.content }}</p>
 
                 {% if question.figure %}
-                    <img src="/{{ question.figure }}" alt="{{ question.content }}"/>
+                    <img src="/static/img/{{ question.figure }}" alt="{{ question.content }}"/>
                 {% endif %}
 
                 <form action="" method="POST">{% csrf_token %}
@@ -57,8 +57,8 @@
                 <!-- sidebar -->
                 </br>
                 <h2>Progress of Quiz</h2>
-                <div class="circle" id="sidebar_circle">
-                    <strong>{{ percent }}%</strong>
+                <div class="circle sidebar-circle" id="sidebar_circle">
+                    <p>{{ percent }}%</p>
                 </div>
                 <script>
                     $('#sidebar_circle').circleProgress({
